@@ -3,4 +3,6 @@ This project is a non-commercial academic work created for educational purposes 
 
 Other assets used include Rider-Waite Smith's Major Arcana deck, utilising a cleaned up and resized version downloaded from luciellaes' [itch.io](https://luciellaes.itch.io/rider-waite-smith-tarot-cards-cc0) asset, which they sourced from [Wikipedia](https://en.wikipedia.org/wiki/Rider%E2%80%93Waite_Tarot). According to [Wikipedia](https://en.wikipedia.org/wiki/Rider%E2%80%93Waite_Tarot#Copyright_status), these assets are public domain according to the United States' copyright laws.
 
+> This might change as I want to draw my own "unique" versions by hand. But that's if I have time. Otherwise, the statement above still applies.
+
 No copyright infringement is intended. All rights to the original assets remain with EPID Games and their respective owners. If you are the copyright holder of any content used in this project and would like it to be removed or properly credited, please contact me, and I will take appropriate action.
