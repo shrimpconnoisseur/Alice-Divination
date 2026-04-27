@@ -55,8 +55,115 @@ signupBubble?.addEventListener('click', (e) => {
   signupBubble.classList.toggle('active');
 });
 
+signupDropdown?.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
 // Close when clicking anywhere else
 document.addEventListener('click', () => {
   signupDropdown?.classList.remove('open');
   signupBubble?.classList.remove('active');
 });
+
+// Character Configs
+const CHARACTERS = {
+  alice: {
+    folder: 'resources/alice',
+    idle: ['alice_idle1.gif', 'alice_idle2.gif'],
+    startup: ['alice_happy1.gif', 'alice_happy2.gif', 'alice_idle1.gif', 'alice_idle2.gif', 'alice_taunt1.gif', 'alice_taunt2.gif'],
+    happy: ['alice_happy1.gif', 'alice_happy2.gif'],
+    taunt: ['alice_taunt1.gif', 'alice_taunt2.gif', 'alice_taunt3.gif'],
+    sad: ['alice_sad1.gif', 'alice_sad2.gif'],
+    surprised: ['alice_surprised.gif'],
+    ignore: ['alice_ignore.gif', 'alice_averteyes.gif'],
+    smash: ['alice_smash.gif'],
+    angry: ['alice_angry1.gif', 'alice_angry2.gif', 'alice_angry3.gif'],
+
+    startupLines: [
+      "Another one falls into Wonderland!",
+      "Ah, a new seeker of fate!",
+      "Welcome! Please, try not to get lost.",
+      "Want a peek at your future? I can't promise a bright one, though!",
+    ],
+    goodDrawLines: [
+      "Oh? Seems like the stars have smiled upon you!",
+      "Wow! Even I'm a little impressed.",
+      "Seems like the cards favour you... for now.",
+      "What luck! Don't waste it!",
+    ],
+    badDrawLines: [
+      "Yikes. I almost feel sorry for you!",
+      "I swear I didn't rig the cards... maybe.",
+      "How unfortunate for you!",
+      "You're still going to have to pay me, you know.",
+      "Ouch. Try again tomorrow, maybe?",
+    ],
+    clickLines: [
+      "Gonna draw some cards? Might as well, right? It's not like anyone is gonna come looking for you here!",
+      "What? Do I have something on my face?",
+      "That's going to cost you a little extra.",
+      "Do you MIND?",
+      "Are you lost? Sorry, that was a stupid question. Of course you are.",
+    ],
+    bonkLines: [
+      "Is this my bad luck?!",
+      "Hey! Watch it!",
+      "I'll increase the payment for this!",
+      "Can you NOT?!",
+    ],
+  },
+
+  yomi: {
+    folder: 'resources/yomi',
+    idle: ['yomi_idle1.gif', 'yomi_idle2.gif'],
+    startup: ['yomi_happy1.gif', 'yomi_happy2.gif', 'yomi_idle1.gif', 'yomi_idle2.gif', 'yomi_dance.gif'],
+    happy: ['yomi_happy1.gif', 'yomi_happy2.gif'],
+    taunt: ['yomi_dance.gif'], // Yomi is too kind to taunt! Instead, default to dance?
+    sad: ['yomi_sad1.gif', 'yomi_sad2.gif'],
+    surprised: ['yomi_surprised.gif'],
+    ignore: ['yomi_surprised.gif'], // Yomi is too kind to ignore! Instead, just default to surprised?
+    smash: ['yomi_smash.gif'],
+    angry: ['yomi_angry1.gif', 'yomi_angry2.gif'],
+
+    startupLines: [
+      "Hello! I hope the cards are kind to you today.",
+      "Welcome to Wonderland~ Let's see what fate has in store!",
+      "Oh, a visitor! Don't worry, I'll be gentle with the reading.",
+      "The cards are ready whenever you are!",
+      "I'll do my best to guide you through this.",
+    ],
+    goodDrawLines: [
+      "Oh wonderful! The cards are smiling at you!",
+      "See? I had a good feeling about this!",
+      "That's a beautiful draw~ you should be happy!",
+      "The universe is on your side today!",
+      "I'm so glad the cards were kind to you!",
+    ],
+    badDrawLines: [
+      "Oh... oh no. I'm so sorry...",
+      "Don't worry! It's just one reading, things will get better.",
+      "The cards can be harsh sometimes... but you'll be okay.",
+      "I wish I could make it better for you...",
+      "Hmm... perhaps try again tomorrow? I'll be here for you.",
+    ],
+    clickLines: [
+      "Yes? Can I help you?",
+      "Oh! Hello~",
+      "Is everything alright?",
+      "I'm here if you need guidance.",
+      "The cards are patient. So am I.",
+      "Thinking about drawing?",
+      "Take your time, there's no rush.",
+    ],
+    bonkLines: [
+      "Ow... that hurt a little...",
+      "Oh! W-what was that for...?",
+      "Please don't do that... it's not very nice...",
+      "Ouch... I didn't do anything wrong, did I?",
+      "...I'll forgive you. But please be gentle.",
+    ],
+  },
+};
+
+// Card Classification
+const POSITIVE_CARD_IDS = new Set([1, 2, 3, 6, 8, 10, 14, 17, 19, 20, 21]);

@@ -854,7 +854,7 @@ body::after {
 /* RESPONSIVE DESIGNS */
 @media (max-width: 2000px) {
   #character-gif {
-    width: 500px;
+    width: 600px;
   }
 
   .speech-bubble {
