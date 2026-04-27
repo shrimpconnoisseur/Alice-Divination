@@ -45,6 +45,11 @@
  * - Finish building the actual script.
  */
 
+document.addEventListener('DOMContentLoaded', () => {
+  // new TarotReading();
+  new CharacterDrag();
+});
+
 // Sign-up bubble toggle
 const signupBubble   = document.getElementById('bubble-signup');
 const signupDropdown = document.getElementById('signup-dropdown');
@@ -164,6 +169,121 @@ const CHARACTERS = {
     ],
   },
 };
+
+// Character Drag
+class CharacterDrag {
+  constructor() {
+    this.el = document.getElementById('character-float');
+    this.resetBtn = document.getElementById('bubble-reset-char');
+    this.DEFAULT = { bottom: '2rem', left: '2rem' };
+
+    this.dragging = false;
+    this.startX = 0;
+    this.startY = 0;
+    this.origLeft = 0;
+    this.origTop = 0;
+
+    if (this.el) {
+      this._initDrag();
+      this._loadPosition();
+    }
+
+    if (this.resetBtn) {
+      this.resetBtn.addEventListener('click', () => this.reset());
+    }
+  }
+
+  _initDrag() {
+    // mouse events
+    this.el.addEventListener('mousedown', (e) => this._onStart(e.clientX, e.clientY, e));
+    document.addEventListener('mousemove', (e) => this._onMove(e.clientX, e.clientY));
+    document.addEventListener('mouseup', () => this._onEnd());
+
+    // touch events
+    this.el.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      this._onStart(touch.clientX, touch.clientY, e);
+    }, { passive: false });
+    document.addEventListener('touchmove', (e) => {
+      if (!this.dragging) return;
+      e.preventDefault();
+      const touch = e.touches[0];
+      this._onMove(touch.clientX, touch.clientY);
+    }, { passive: false });
+    document.addEventListener('touchend', () => this._onEnd());
+  }
+
+  _onStart(clientX, clientY, e) {
+    this.dragging = true;
+
+    const rect = this.el.getBoundingClientRect();
+    this.startX = clientX;
+    this.startY = clientY;
+    this.origLeft = rect.left;
+    this.origTop = rect.top;
+
+    this.el.style.bottom = 'auto';
+    this.el.style.right = 'auto';
+    this.el.style.left = this.origLeft + 'px';
+    this.el.style.top = this.origTop + 'px';
+    this.el.style.transition = 'none';
+  }
+
+  _onMove(clientX, clientY) {
+    if (!this.dragging) return;
+
+    const deltaX = clientX - this.startX;
+    const deltaY = clientY - this.startY;
+
+    let newLeft = this.origLeft + deltaX;
+    let newTop = this.origTop + deltaY;
+
+    // clamp to viewport
+    const rect = this.el.getBoundingClientRect();
+    newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - rect.width));
+    newTop = Math.max(0, Math.min(newTop, window.innerHeight - rect.height));
+
+    this.el.style.left = newLeft + 'px';
+    this.el.style.top = newTop + 'px';
+  }
+
+  _onEnd() {
+    if (!this.dragging) return;
+    this.dragging = false;
+    this._savePosition();
+  }
+
+  _savePosition() {
+    localStorage.setItem('characterPos', JSON.stringify({
+      left: this.el.style.left,
+      top: this.el.style.top,
+    }));
+  }
+
+  _loadPosition() {
+    const saved_pos = localStorage.getItem('characterPos');
+    if (!saved) return;
+    try {
+      const { left, top } = JSON.parse(saved_pos);
+      this.el.style.bottom = 'auto';
+      this.el.style.right = 'auto';
+      this.el.style.left = left;
+      this.el.style.top = top;
+    } catch (e) {
+      console.error('Error loading character position:', e);
+    }
+  }
+
+  reset() {
+    localStorage.removeItem('characterPos');
+    this.el.style.transition = 'left 0.4s ease, top 0.4s ease';
+    this.el.style.left = '2rem';
+    this.el.style.top = 'auto';
+    this.el.style.bottom = '2rem';
+    this.el.style.right = 'auto';
+    setTimeout(() => { this.el.style.transition = ''; }, 400);
+  }
+}
 
 // Card Classification
 const POSITIVE_CARD_IDS = new Set([1, 2, 3, 6, 8, 10, 14, 17, 19, 20, 21]);

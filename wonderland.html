@@ -13,6 +13,10 @@
 
     <!-- NAVIGATION BUBBLES -->
      <nav class="nav-bubbles" aria-label="Site navigation">
+      <div class="nav-bubble" id="bubble-reset-char" title="Reset Character Position">
+        <span class="nav-bubble-label" style="padding:20px; text-align:center;">Reset Position</span>
+      </div>
+      
       <a href="deck.html" class="nav-bubble" id="bubble-deck" title="View Full Deck">
         <span class="nav-bubble-label">Full Deck</span>
       </a>
@@ -22,7 +26,7 @@
       </a>
 
       <div class="nav-bubble nav-bubble--signup" id="bubble-signup" title="Sign Up">
-        <span class="nav-bubble-label">Join us in Wonderland!</span>
+        <span class="nav-bubble-label" style="text-align:center;">Join us in Wonderland!</span>
 
         <div class="signup-dropdown" id="signup-dropdown" aria-hidden="true">
           <div class="signup-dropdown-inner">
@@ -41,36 +45,20 @@
       </div>
      </nav>
 
-    <!--WONDERLAND CONTAINER START-->
-    <div class="wonderland-container">
-
-      <!--CHARACTER CONTAINER START-->
-      <div class="character-container">
-        <div class="character-sprite">
-          <img id="character-gif" src="resources/alice/alice_happy1.gif">
-					<!-- This should be randomized upon startup in JS with one of the following:
-					 - alice_happy1.gif
-           - alice_happy2.gif
-					 - alice_idle1.gif
-           - alice_idle2.gif
-					 - alice_taunt1.gif
-					 - alice_taunt3.gif
-
-					 Maybe just for fun, have a 10% chance for Alice to be replaced by Yomi on page start-up or refresh, found in her own resource folder (resouces/yomi):
-					 - yomi_idle1.gif
-					 - yomi_idle2.gif
-					 - yomi_happy1.gif
-					 - yomi_happy2.gif
-					 - yomi_dance.gif
-
-					 Depending on who is present on startup, also change the character-speech paragraph.
-          --> 
-          <div class="speech-bubble" id="speech-bubble">
-            <p id="character-speech">Another one falls into Wonderland!</p>
-          </div>
+    <!--CHARACTER CONTAINER START-->
+    <!--Now its own top-level element.-->
+    <div class="character-float" id="character-float">
+      <div class="character-sprite">
+        <img id="character-gif" src="resources/alice/alice_happy1.gif">
+        <div class="speech-bubble" id="speech-bubble">
+          <p id="character-speech">Another one falls into Wonderland!</p>
         </div>
       </div>
-      <!--CHARACTER CONTAINER END-->
+    </div>
+    <!--CHARACTER CONTAINER END-->
+
+    <!--WONDERLAND CONTAINER START-->
+    <div class="wonderland-container">
 
       <!--TAROT CONTAINER START-->
       <div class="tarot-card-container">

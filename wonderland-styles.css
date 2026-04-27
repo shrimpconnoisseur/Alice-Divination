@@ -314,13 +314,33 @@ body::after {
   z-index: 1;
 }
 
-.character-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
+.character-float {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 200;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  filter: drop-shadow(0 4px 20px rgba(77, 217, 232, 0.4));
+  transition: filter 0.2s ease;
+}
+
+.character-float:active {
+  cursor: grabbing;
+  filter: drop-shadow(0 8px 32px rgba(77, 217, 232, 0.7));
+}
+
+.character-float .character-sprite {
   position: relative;
-  z-index: 100;
-  animation: floatIn 1s ease-out;
+  display: inline-block;
+}
+
+#character-gif { 
+  width: 260px;
+  height: auto;
+  display: block;
+  animation: gentleFloat 3s ease-in-out infinite;
 }
 
 @keyframes floatIn {
@@ -853,7 +873,7 @@ body::after {
 
 /* RESPONSIVE DESIGNS */
 @media (max-width: 2000px) {
-  #character-gif {
+  .character-float #character-gif {
     width: 600px;
   }
 
@@ -918,8 +938,8 @@ body::after {
 }
 
 @media (max-width: 640px) {
-  #character-gif {
-    width: 500px;
+  .character-float #character-gif {
+    width: 150px;
   }
 
   .speech-bubble {
