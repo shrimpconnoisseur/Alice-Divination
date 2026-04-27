@@ -1,4 +1,6 @@
 # Alice-Divination
 This project is a non-commercial academic work created for educational purposes only. Some graphical assets used on this website (Alice and Yomi) are not my original assets but are the property of their respective owner(s), including EPID Games, the developers of Trickcal. These assets have been sourced from publically available materials and are used here solely for demonstration and learning purposes. Specifically, they are sourced from Sefhi's website [Loot & Waifus](https://lootandwaifus.com/).
 
+Other assets used include Rider-Waite Smith's Major Arcana deck, utilising a cleaned up and resized version downloaded from luciellaes' [itch.io](https://luciellaes.itch.io/rider-waite-smith-tarot-cards-cc0) asset, which they sourced from (Wikipedia)[https://en.wikipedia.org/wiki/Rider%E2%80%93Waite_Tarot]. These assets are public domain according to the United States' copyright laws.
+
 No copyright infringement is intended. All rights to the original assets remain with EPID Games and their respective owners. If you are the copyright holder of any content used in this project and would like it to be removed or properly credited, please contact me, and I will take appropriate action.
