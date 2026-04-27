@@ -1,5 +1,4 @@
 # Alice-Divination
+This project is a non-commercial academic work created for educational purposes only. Some graphical assets used on this website are not original are the property of their respective owner(s), including EPID Games, the developers of Trickcal. These assets have been sourced from publically available materials and are used here solely for demonstration and learning purposes. Specifically, they are sourced from Sefhi's website [Loot & Waifus](https://lootandwaifus.com/).
 
-> This project is a non-commercial academic work created for educational purposes only. Some graphical assets used on this website are not original are the property of their respective owner(s), including EPID Games, the developers of Trickcal. These assets have been sourced from publically available materials and are used here solely for demonstration and learning purposes. Specifically, they are sourced from Sefhi's website [Loot & Waifus](https://lootandwaifus.com/).
-
-> No copyright infringement is intended. All rights to the original assets remain with EPID Games and their respective owners. If you are the copyright holder of any content used in this project and would like it to be removed or properly credited, please contact me, and I will take appropriate action.
+No copyright infringement is intended. All rights to the original assets remain with EPID Games and their respective owners. If you are the copyright holder of any content used in this project and would like it to be removed or properly credited, please contact me, and I will take appropriate action.
