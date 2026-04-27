@@ -1,0 +1,378 @@
+{
+  "cards": [
+    {
+      "id": 0,
+      "title": "The Fool",
+      "filename": "The_Fool.png",
+      "upright": {
+        "overall": "New beginnings, innocence, taking a leap of faith.",
+        "past": "A past risk or fresh start set your path in motion.",
+        "present": "You are at the start of something new; trust the journey.",
+        "future": "An unexpected opportunity will require courage."
+      },
+      "reversed": {
+        "overall": "Recklessness, fear of change, poor judgment.",
+        "past": "A careless decision still affects you.",
+        "present": "Hesitation or naivety may cause mistakes.",
+        "future": "A missed opportunity if fear or foolishness dominates."
+      }
+    },
+    {
+      "id": 1,
+      "title": "The Magician",
+      "filename": "The_Magician.png",
+      "upright": {
+        "overall": "Manifestation, resourcefulness, power, inspired action.",
+        "past": "You manifested your desires through skill and determination.",
+        "present": "You possess the power to turn visions into reality.",
+        "future": "Your skills and resources will align to achieve your goals."
+      },
+      "reversed": {
+        "overall": "Manipulation, poor planning, untapped talents.",
+        "past": "You may have used deception or wasted potential.",
+        "present": "You're not using talents effectively or being dishonest.",
+        "future": "Beware of manipulation or unrealized potential."
+      }
+    },
+    {
+      "id": 2,
+      "title": "The High Priestess",
+      "filename": "The_High_Priestess.png",
+      "upright": {
+        "overall": "Intuition, sacred knowledge, divine feminine, subconscious.",
+        "past": "You were guided by intuition and inner wisdom.",
+        "present": "Listen to your inner voice; answers lie within.",
+        "future": "Hidden knowledge will be revealed through introspection."
+      },
+      "reversed": {
+        "overall": "Secrets, disconnected from intuition, withdrawal.",
+        "past": "You ignored your intuition or kept harmful secrets.",
+        "present": "You're blocking your inner voice or hiding truths.",
+        "future": "Continued secrecy or intuition blockage will cause problems."
+      }
+    },
+    {
+      "id": 3,
+      "title": "The Empress",
+      "filename": "The_Empress.png",
+      "upright": {
+        "overall": "Femininity, beauty, nature, nurturing, abundance.",
+        "past": "A period of abundance and nurturing energy surrounded you.",
+        "present": "Embrace creativity and nurture projects and relationships.",
+        "future": "Prosperity and growth are coming; efforts will bear fruit."
+      },
+      "reversed": {
+        "overall": "Creative block, dependence, emptiness, lack of growth.",
+        "past": "You neglected self-care or experienced stagnation.",
+        "present": "You're experiencing creative blocks or over-dependence.",
+        "future": "Without self-care, growth will remain stunted."
+      }
+    },
+    {
+      "id": 4,
+      "title": "The Emperor",
+      "filename": "The_Emperor.png",
+      "upright": {
+        "overall": "Authority, establishment, structure, father figure.",
+        "past": "You established order and took control of circumstances.",
+        "present": "Take charge and create structure; lead with wisdom.",
+        "future": "You will step into a position of power and responsibility."
+      },
+      "reversed": {
+        "overall": "Domination, excessive control, lack of discipline.",
+        "past": "You were too controlling or lacked necessary discipline.",
+        "present": "You're being tyrannical or lacking structure.",
+        "future": "Rigidity or chaos will undermine your authority."
+      }
+    },
+    {
+      "id": 5,
+      "title": "The Hierophant",
+      "filename": "The_Hierophant.png",
+      "upright": {
+        "overall": "Spiritual wisdom, tradition, conformity, institutions.",
+        "past": "You sought guidance from traditional sources or mentors.",
+        "present": "Honor tradition and seek wisdom from established teachers.",
+        "future": "A mentor or spiritual guide will appear on your path."
+      },
+      "reversed": {
+        "overall": "Personal beliefs, freedom, challenging status quo.",
+        "past": "You rejected tradition or forged your own path.",
+        "present": "You're breaking from convention or questioning dogma.",
+        "future": "Independence from tradition will define your journey."
+      }
+    },
+    {
+      "id": 6,
+      "title": "The Lovers",
+      "filename": "The_Lovers.png",
+      "upright": {
+        "overall": "Love, harmony, relationships, values alignment, choices.",
+        "past": "An important relationship or choice shaped your path.",
+        "present": "A significant choice lies before you; follow your heart.",
+        "future": "A meaningful partnership or important decision approaches."
+      },
+      "reversed": {
+        "overall": "Self-love, disharmony, imbalance, misaligned values.",
+        "past": "A relationship ended or values conflicted.",
+        "present": "You're experiencing relationship difficulties or value conflicts.",
+        "future": "Misalignment will cause separation or difficult choices."
+      }
+    },
+    {
+      "id": 7,
+      "title": "The Chariot",
+      "filename": "The_Chariot.png",
+      "upright": {
+        "overall": "Control, willpower, success, action, determination.",
+        "past": "You overcame obstacles through determination and will.",
+        "present": "Take the reins and charge forward with confidence.",
+        "future": "Success is yours if you maintain focus and determination."
+      },
+      "reversed": {
+        "overall": "Lack of control, aggression, opposition, directionless.",
+        "past": "You lost control or headed in the wrong direction.",
+        "present": "You're struggling with control or facing opposition.",
+        "future": "Without direction, you'll lose momentum and fail."
+      }
+    },
+    {
+      "id": 8,
+      "title": "Strength",
+      "filename": "Strength.png",
+      "upright": {
+        "overall": "Strength, courage, persuasion, compassion, inner power.",
+        "past": "You showed courage and compassion in difficulty.",
+        "present": "Face challenges with inner strength and gentle persuasion.",
+        "future": "Your inner strength will help overcome any obstacle."
+      },
+      "reversed": {
+        "overall": "Self-doubt, low energy, raw emotion, weakness.",
+        "past": "You lacked confidence or let emotions override reason.",
+        "present": "You're doubting yourself or feeling powerless.",
+        "future": "Continued self-doubt will prevent you from succeeding."
+      }
+    },
+    {
+      "id": 9,
+      "title": "The Hermit",
+      "filename": "The_Hermit.png",
+      "upright": {
+        "overall": "Soul-searching, introspection, solitude, inner guidance.",
+        "past": "A period of introspection led to important insights.",
+        "present": "Withdraw from noise and seek answers within yourself.",
+        "future": "Solitude will bring the wisdom and clarity you seek."
+      },
+      "reversed": {
+        "overall": "Isolation, loneliness, withdrawal, losing your way.",
+        "past": "You isolated yourself too much or avoided introspection.",
+        "present": "You're withdrawing excessively or feeling lost.",
+        "future": "Continued isolation will lead to deeper loneliness."
+      }
+    },
+    {
+      "id": 10,
+      "title": "Wheel of Fortune",
+      "filename": "Wheel_of_Fortune.png",
+      "upright": {
+        "overall": "Good luck, karma, life cycles, destiny, turning point.",
+        "past": "A stroke of luck or karmic event changed your trajectory.",
+        "present": "Fate is at work; embrace the changes coming your way.",
+        "future": "A turning point approaches; trust in life's cycles."
+      },
+      "reversed": {
+        "overall": "Bad luck, resistance to change, breaking cycles.",
+        "past": "You experienced a downturn or resisted necessary change.",
+        "present": "You're fighting against inevitable changes.",
+        "future": "Resisting the wheel's turn will bring misfortune."
+      }
+    },
+    {
+      "id": 11,
+      "title": "Justice",
+      "filename": "Justice.png",
+      "upright": {
+        "overall": "Justice, fairness, truth, cause and effect, law.",
+        "past": "A fair outcome resulted from past actions.",
+        "present": "Seek truth and fairness; actions have consequences.",
+        "future": "Justice will be served; you'll get what you deserve."
+      },
+      "reversed": {
+        "overall": "Unfairness, lack of accountability, dishonesty.",
+        "past": "You avoided accountability or experienced injustice.",
+        "present": "You're being dishonest or treated unfairly.",
+        "future": "Injustice or dishonesty will catch up with you."
+      }
+    },
+    {
+      "id": 12,
+      "title": "The Hanged Man",
+      "filename": "The_Hanged_Man.png",
+      "upright": {
+        "overall": "Pause, surrender, letting go, new perspectives.",
+        "past": "You gained wisdom by letting go and seeing differently.",
+        "present": "Pause and release control; a new perspective is needed.",
+        "future": "Surrendering will bring unexpected insights and growth."
+      },
+      "reversed": {
+        "overall": "Delays, resistance, stalling, indecision.",
+        "past": "You were stuck in limbo or resisted necessary sacrifice.",
+        "present": "You're resisting change or delaying important decisions.",
+        "future": "Continued resistance will keep you stuck."
+      }
+    },
+    {
+      "id": 13,
+      "title": "Death",
+      "filename": "Death.png",
+      "upright": {
+        "overall": "Endings, change, transformation, transition, rebirth.",
+        "past": "A significant ending or transformation occurred.",
+        "present": "Release what no longer serves you; transformation is needed.",
+        "future": "Major change is coming; embrace the transformation."
+      },
+      "reversed": {
+        "overall": "Resistance to change, personal transformation, stagnation.",
+        "past": "You resisted necessary endings or change.",
+        "present": "You're clinging to the past or fearing transformation.",
+        "future": "Avoiding change will lead to stagnation and decay."
+      }
+    },
+    {
+      "id": 14,
+      "title": "Temperance",
+      "filename": "Temperance.png",
+      "upright": {
+        "overall": "Balance, moderation, patience, purpose, harmony.",
+        "past": "You found balance and harmony through patience.",
+        "present": "Seek moderation and balance in all things; be patient.",
+        "future": "Harmony will come through measured, balanced action."
+      },
+      "reversed": {
+        "overall": "Imbalance, excess, self-healing, re-alignment needed.",
+        "past": "You experienced extremes or lost balance.",
+        "present": "You're living in extremes or lacking moderation.",
+        "future": "Without balance, chaos and excess will dominate."
+      }
+    },
+    {
+      "id": 15,
+      "title": "The Devil",
+      "filename": "The_Devil.png",
+      "upright": {
+        "overall": "Shadow self, attachment, addiction, restriction, bondage.",
+        "past": "You were trapped by unhealthy attachments or behaviors.",
+        "present": "Examine your dependencies; break free from bondage.",
+        "future": "Beware of temptation and unhealthy patterns."
+      },
+      "reversed": {
+        "overall": "Releasing limiting beliefs, exploring darkness, detachment.",
+        "past": "You began breaking free from restrictions.",
+        "present": "You're confronting your shadow or releasing addictions.",
+        "future": "Freedom from bondage is within reach if you persist."
+      }
+    },
+    {
+      "id": 16,
+      "title": "The Tower",
+      "filename": "The_Tower.png",
+      "upright": {
+        "overall": "Sudden change, upheaval, chaos, revelation, awakening.",
+        "past": "A sudden upheaval shattered your foundations.",
+        "present": "Brace for sudden change; what's false must fall.",
+        "future": "A revelation will shake foundations but clear room for truth."
+      },
+      "reversed": {
+        "overall": "Personal transformation, fear of change, averting disaster.",
+        "past": "You narrowly avoided disaster or experienced internal upheaval.",
+        "present": "You're avoiding necessary change or transforming internally.",
+        "future": "Delaying the tower's fall will only make it worse."
+      }
+    },
+    {
+      "id": 17,
+      "title": "The Star",
+      "filename": "The_Star.png",
+      "upright": {
+        "overall": "Hope, faith, purpose, renewal, spirituality, healing.",
+        "past": "You found hope and renewed faith after difficulty.",
+        "present": "Have faith; healing and renewal are available to you.",
+        "future": "Hope returns; your wishes will be granted."
+      },
+      "reversed": {
+        "overall": "Lack of faith, despair, self-trust issues, disconnection.",
+        "past": "You lost hope or became disconnected from spirituality.",
+        "present": "You're losing faith or doubting yourself.",
+        "future": "Without hope, despair will overwhelm you."
+      }
+    },
+    {
+      "id": 18,
+      "title": "The Moon",
+      "filename": "The_Moon.png",
+      "upright": {
+        "overall": "Illusion, fear, anxiety, subconscious, intuition, mystery.",
+        "past": "Confusion and illusion clouded your judgment.",
+        "present": "Trust intuition but verify facts; things aren't clear.",
+        "future": "Mysteries will unfold; listen to dreams and intuition."
+      },
+      "reversed": {
+        "overall": "Release of fear, repressed emotion, inner confusion.",
+        "past": "You began releasing fears or confronting illusions.",
+        "present": "You're clearing confusion or facing repressed emotions.",
+        "future": "Clarity will come as illusions fade and fears release."
+      }
+    },
+    {
+      "id": 19,
+      "title": "The Sun",
+      "filename": "The_Sun.png",
+      "upright": {
+        "overall": "Positivity, fun, warmth, success, vitality, joy.",
+        "past": "A time of joy and success blessed your life.",
+        "present": "Bask in success and happiness; everything is illuminated.",
+        "future": "Joy, success, and vitality are coming your way."
+      },
+      "reversed": {
+        "overall": "Inner child, temporary sadness, overly optimistic.",
+        "past": "You experienced temporary darkness or false optimism.",
+        "present": "You're feeling down or being unrealistically positive.",
+        "future": "Clouds may temporarily dim your light."
+      }
+    },
+    {
+      "id": 20,
+      "title": "Judgement",
+      "filename": "Judgement.png",
+      "upright": {
+        "overall": "Judgement, rebirth, inner calling, absolution, awakening.",
+        "past": "You experienced a significant awakening or reckoning.",
+        "present": "Reflect on your past and rise to your calling.",
+        "future": "A moment of reckoning will bring clarity and renewal."
+      },
+      "reversed": {
+        "overall": "Self-doubt, inner critic, ignoring the call, self-loathing.",
+        "past": "You were too harsh on yourself or ignored your calling.",
+        "present": "You're doubting yourself or avoiding your purpose.",
+        "future": "Ignoring your calling will lead to regret."
+      }
+    },
+    {
+      "id": 21,
+      "title": "The World",
+      "filename": "The_World.png",
+      "upright": {
+        "overall": "Completion, accomplishment, travel, fulfillment, harmony.",
+        "past": "You achieved completion and fulfillment in an important area.",
+        "present": "Celebrate your accomplishments; a cycle completes successfully.",
+        "future": "Success and completion await; the world is yours."
+      },
+      "reversed": {
+        "overall": "Seeking closure, shortcuts, delays, incomplete.",
+        "past": "You took shortcuts or left things incomplete.",
+        "present": "You're close to completion but experiencing delays.",
+        "future": "Shortcuts will prevent true fulfillment and completion."
+      }
+    }
+  ]
+}

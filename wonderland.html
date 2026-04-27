@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="tetra">
+    <title>Wonderland</title>
+		<link rel="icon" type="image/png" href="/resources/alice-icon.png">
+    <link rel="stylesheet" href="wonderland-styles.css">
+    <script src="wonderland-scripts.js"></script>
+  </head>
+  <body>
+    <!-- ADD A DISCLAIMER SOMEWHERE! -->
+
+    <!-- NAVIGATION BUBBLES -->
+     <nav class="nav-bubbles" aria-label="Site navigation">
+      <a href="deck.html" class="nav-bubble" id="bubble-deck" title="View Full Deck">
+        <span class="nav-bubble-label">Full Deck</span>
+      </a>
+
+      <a href="history.html" class="nav-bubble" id="bubble-history" title="Past Divinations">
+        <span class="nav-bubble-label">History</span>
+      </a>
+
+      <div class="nav-bubble nav-bubble--signup" id="bubble-signup" title="Sign Up">
+        <span class="nav-bubble-label">Join us in Wonderland!</span>
+
+        <div class="signup-dropdown" id="signup-dropdown" aria-hidden="true">
+          <div class="signup-dropdown-inner">
+            <h3 class="signup-title">Enter Wonderland</h3>
+            <div class="signup-field">
+              <label for="signup-username">Username</label>
+              <input type="text" id="signup-username" name="username">
+            </div>
+            <div class="signup-field">
+              <label for="signup-password">Password</label>
+              <input type="password" id="signup-password" name="password">
+            </div>
+            <button class="signup-submit" type="button">Enter</button>
+          </div>
+        </div>
+      </div>
+     </nav>
+
+    <!--WONDERLAND CONTAINER START-->
+    <div class="wonderland-container">
+
+      <!--CHARACTER CONTAINER START-->
+      <div class="character-container">
+        <div class="character-sprite">
+          <img id="character-gif" src="resources/alice/alice_happy1.gif">
+					<!-- This should be randomized upon startup in JS with one of the following:
+					 - alice_happy1.gif
+           - alice_happy2.gif
+					 - alice_idle1.gif
+           - alice_idle2.gif
+					 - alice_taunt1.gif
+					 - alice_taunt3.gif
+
+					 Maybe just for fun, have a 10% chance for Alice to be replaced by Yomi on page start-up or refresh, found in her own resource folder (resouces/yomi):
+					 - yomi_idle1.gif
+					 - yomi_idle2.gif
+					 - yomi_happy1.gif
+					 - yomi_happy2.gif
+					 - yomi_dance.gif
+
+					 Depending on who is present on startup, also change the character-speech paragraph.
+          --> 
+          <div class="speech-bubble" id="speech-bubble">
+            <p id="character-speech">Another one falls into Wonderland!</p>
+          </div>
+        </div>
+      </div>
+      <!--CHARACTER CONTAINER END-->
+
+      <!--TAROT CONTAINER START-->
+      <div class="tarot-card-container">
+        <h1 class="title">Wonderland Tarot Reading</h1>
+
+        <!-- READING STATUS -->
+        <div class="tarot-card-reading" id="tarot-card-reading"> 
+          <p id="status-text">Let Alice perform a divination to see the reading status!</p>
+        </div>
+
+        <!-- TAROT CARDS -->
+        <div class="reading-mode-toggle">
+          <span class="toggle-label" id="label-single">Daily Fortune</span>
+          <div class="toggle-track" id="reading-toggle">
+            <div class="toggle-orb"></div>
+            <div class="toggle-pip pip-1"></div>
+            <div class="toggle-pip pip-2"></div>
+            <div class="toggle-pip pip-3"></div>
+          </div>
+          <span class="toggle-label" id="label-three">Past · Present · Future</span>
+        </div>
+
+        <div class="tarot-cards" id="tarot-cards">
+          <div class="card-position" data-position="past">
+            <div class="card-wrapper" id="card-past">
+              <div class="card-back"></div>
+            </div>
+            <p class="position-label">Past</p>
+          </div>
+
+          <div class="card-position" data-position="present">
+            <div class="card-wrapper" id="card-present">
+              <div class="card-back"></div>
+            </div>
+            <p class="position-label">Present</p>
+          </div>
+
+          <div class="card-position" data-position="future">
+            <div class="card-wrapper" id="card-future">
+              <div class="card-back"></div>
+            </div>
+            <p class="position-label">Future</p>
+          </div>
+        </div>
+      </div>
+      <!--TAROT CONTAINER END-->
+
+      <button class="draw-button">Draw Cards</button>
+
+      <!--TAROT INTERPRETATION CONTAINER START-->
+      <div class="modal" id="card-modal">
+        <div class="modal-content">
+          <span class="close-button" id="close-modal">&times;</span>
+
+          <div class="modal-body">
+            <div class="modal-card-display">
+              <img id="modal-card-image" src="" alt="Tarot Card">
+              <p class="reversed-indicator" id="reversed-indicator" style="display: none;">Reversed</p>
+            </div>
+
+            <div class="modal-card-info">
+              <!--OVERALL-->
+              <h2 id="modal-card-name"></h2>
+              <div class="card-meaning">
+                <h3>Overall Interpretation</h3>
+                <p id="modal-overall-meaning"></p>
+              </div>
+
+              <!--TEMPORAL-->
+              <div class="card-meaning">
+                <h3 id="modal-temporal-title">Temporal Interpretation</h3>
+                <p id="modal-temporal-meaning"></p>
+              </div>
+
+              <!--REVERSED-->
+              <div class="card-meaning reversed-meaning" id="reversed-meaning-section" style="display: none;">
+                <h3>Reversed Interpretation</h3>
+                <p id="modal-reversed-meaning"></p>
+              </div>
+            </div>
+            <!--TAROT INTERPRETATION CONTAINER END-->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--WONDERLAND CONTAINER END-->
+  </body>
+</html>
