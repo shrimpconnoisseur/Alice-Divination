@@ -101,6 +101,82 @@ body::after {
   50% { background-position: 100% 100%; }
 }
 
+/* CONTROLLER BUBBLES */
+.controller-bubbles {
+  position:fixed;
+  top: 1.4rem;
+  left: 1.6rem;
+  display: flex;
+  gap: 0.75rem;
+  z-index: 500;
+  align-items: flex-start;
+}
+
+.controller-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%,
+    rgba(107, 78, 154, 0.85) 0%,
+    rgba(10, 14, 39, 0.92) 100%);
+  border: 2px solid rgba(244, 208, 63, 0.45);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(107, 78, 154, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--silver);
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+  animation: bubbleFloat 4s ease-in-out infinite;
+}
+
+.controller-bubble:nth-child(1) { animation-delay: 0s;}
+.controller-bubble:nth-child(2) { animation-delay: 0.6s;}
+.controller-bubble:nth-child(3) { animation-delay: 1.2s;}
+
+.controller-bubble:hover {
+  border-color: var(--golden);
+  box-shadow:
+    0 6px 28px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(244, 208, 63, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation-play-state: paused;
+  transform: translateY(-4px) scale(1.08);
+}
+
+.controller-bubble::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 18%;
+  width: 30%;
+  height: 18%;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.controller-bubble-label {
+  font-family: "AliceFont", cursive;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--golden);
+  opacity: 0.85;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
 /* NAV BUBBLES */
 .nav-bubbles {
   position: fixed;
@@ -917,6 +993,21 @@ body::after {
     flex: auto;
   }
 
+  .controller-bubbles {
+    gap: 0.5rem;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .controller-bubble {
+    width: 80px;
+    height: 80px;
+  }
+
+  .controller-bubble-label {
+    font-size: 0.8rem;
+  }
+
   .nav-bubbles {
     gap: 0.5rem;
     top: 1rem;
@@ -969,6 +1060,25 @@ body::after {
   .draw-button {
     font-size: 1.4rem;
     padding: 1rem 2rem;
+  }
+
+  .controller-bubbles {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 0 0.5rem;
+  }
+
+  .controller-bubble {
+    width: 58px;
+    height: 58px;
+  }
+
+  .controller-bubble-label {
+    font-size: 0.54rem;
   }
 
   .nav-bubbles {

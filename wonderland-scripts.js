@@ -45,11 +45,6 @@
  * - Finish building the actual script.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // new TarotReading();
-  new CharacterDrag();
-});
-
 // Sign-up bubble toggle
 const signupBubble   = document.getElementById('bubble-signup');
 const signupDropdown = document.getElementById('signup-dropdown');
@@ -97,7 +92,7 @@ const CHARACTERS = {
       "What luck! Don't waste it!",
     ],
     badDrawLines: [
-      "Yikes. I almost feel sorry for you!",
+      "Yikes. I almost feel sorry for you.",
       "I swear I didn't rig the cards... maybe.",
       "How unfortunate for you!",
       "You're still going to have to pay me, you know.",
@@ -106,7 +101,7 @@ const CHARACTERS = {
     clickLines: [
       "Gonna draw some cards? Might as well, right? It's not like anyone is gonna come looking for you here!",
       "What? Do I have something on my face?",
-      "That's going to cost you a little extra.",
+      "You'll get my clothes dirty.",
       "Do you MIND?",
       "Are you lost? Sorry, that was a stupid question. Of course you are.",
     ],
@@ -115,6 +110,7 @@ const CHARACTERS = {
       "Hey! Watch it!",
       "I'll increase the payment for this!",
       "Can you NOT?!",
+      "This won't change your results!",
     ],
   },
 
@@ -133,7 +129,7 @@ const CHARACTERS = {
     startupLines: [
       "Hello! I hope the cards are kind to you today.",
       "Welcome to Wonderland~ Let's see what fate has in store!",
-      "Oh, a visitor! Don't worry, I'll be gentle with the reading.",
+      "Don't tell that phantom I'm here, okay?",
       "The cards are ready whenever you are!",
       "I'll do my best to guide you through this.",
     ],
@@ -170,120 +166,293 @@ const CHARACTERS = {
   },
 };
 
-// Character Drag
-class CharacterDrag {
+// Character Placer
+// REPLACED THE CLICK TO DRAG FEATURE DUE TO CONFLICTS WITH THE CHARACTER CONTROLLER CLASS
+class CharacterPlacer {
   constructor() {
-    this.el = document.getElementById('character-float');
-    this.resetBtn = document.getElementById('bubble-reset-char');
-    this.DEFAULT = { bottom: '2rem', left: '2rem' };
+    this.el        = document.getElementById('character-float');
+    this.resetBtn  = document.getElementById('bubble-reset-char');
+    this.moveBtn   = document.getElementById('bubble-move-char');
+    this.costumeBtn = document.getElementById('bubble-char-costume');
+    this.preview   = null;
+    this.placing   = false;
 
-    this.dragging = false;
-    this.startX = 0;
-    this.startY = 0;
-    this.origLeft = 0;
-    this.origTop = 0;
+    if (this.el) this._loadPosition();
 
-    if (this.el) {
-      this._initDrag();
-      this._loadPosition();
-    }
-
-    if (this.resetBtn) {
-      this.resetBtn.addEventListener('click', () => this.reset());
-    }
+    this.resetBtn?.addEventListener('click', () => this.reset());
+    this.moveBtn?.addEventListener('click', () => this._togglePlaceMode());
   }
 
-  _initDrag() {
-    // mouse events
-    this.el.addEventListener('mousedown', (e) => this._onStart(e.clientX, e.clientY, e));
-    document.addEventListener('mousemove', (e) => this._onMove(e.clientX, e.clientY));
-    document.addEventListener('mouseup', () => this._onEnd());
-
-    // touch events
-    this.el.addEventListener('touchstart', (e) => {
-      const touch = e.touches[0];
-      this._onStart(touch.clientX, touch.clientY, e);
-    }, { passive: false });
-    document.addEventListener('touchmove', (e) => {
-      if (!this.dragging) return;
-      e.preventDefault();
-      const touch = e.touches[0];
-      this._onMove(touch.clientX, touch.clientY);
-    }, { passive: false });
-    document.addEventListener('touchend', () => this._onEnd());
+  _togglePlaceMode() {
+    this.placing ? this._exitPlaceMode() : this._enterPlaceMode();
   }
 
-  _onStart(clientX, clientY, e) {
-    this.dragging = true;
+  _enterPlaceMode() {
+    this.placing = true;
+    this.moveBtn.classList.add('active');
 
-    const rect = this.el.getBoundingClientRect();
-    this.startX = clientX;
-    this.startY = clientY;
-    this.origLeft = rect.left;
-    this.origTop = rect.top;
+    this.preview = document.createElement('div');
+    this.preview.id = 'character-preview';
+    this.preview.style.cssText = `
+      position: fixed;
+      pointer-events: none;
+      z-index: 199;
+      opacity: 0.45;
+      filter: drop-shadow(0 0 16px rgba(77, 217, 232, 0.8));
+      transition: left 0.05s, top 0.05s;
+    `;
 
+    const img = document.createElement('img');
+    img.src = document.getElementById('character-gif').src;
+    img.style.cssText = document.getElementById('character-gif').style.cssText;
+    img.style.width   = getComputedStyle(document.getElementById('character-gif')).width;
+    img.style.animation = 'none';
+    this.preview.appendChild(img);
+    document.body.appendChild(this.preview);
+
+    document.body.style.cursor = 'crosshair';
+
+    this._onMouseMove = (e) => this._trackPreview(e.clientX, e.clientY);
+    this._onClick     = (e) => this._placeAt(e.clientX, e.clientY);
+
+    document.addEventListener('mousemove', this._onMouseMove);
+    document.addEventListener('click',     this._onClick,     { once: false });
+
+    this._onKeyDown = (e) => { if (e.key === 'Escape') this._exitPlaceMode(); };
+    document.addEventListener('keydown', this._onKeyDown);
+  }
+
+  _exitPlaceMode() {
+    this.placing = false;
+    this.moveBtn?.classList.remove('active');
+    document.body.style.cursor = '';
+
+    document.removeEventListener('mousemove', this._onMouseMove);
+    document.removeEventListener('click',     this._onClick);
+    document.removeEventListener('keydown',   this._onKeyDown);
+
+    this.preview?.remove();
+    this.preview = null;
+  }
+
+  _trackPreview(clientX, clientY) {
+    if (!this.preview) return;
+
+    const w = this.preview.offsetWidth;
+    const h = this.preview.offsetHeight;
+
+    const left = Math.max(0, Math.min(clientX - w / 2, window.innerWidth  - w));
+    const top  = Math.max(0, Math.min(clientY - h / 2, window.innerHeight - h));
+    this.preview.style.left = left + 'px';
+    this.preview.style.top  = top  + 'px';
+  }
+
+  _placeAt(clientX, clientY) {
+    const target = document.elementFromPoint(clientX, clientY);
+    if (this.moveBtn?.contains(target) || this.resetBtn?.contains(target)) return;
+
+    const w = this.el.offsetWidth;
+    const h = this.el.offsetHeight;
+    const left = Math.max(0, Math.min(clientX - w / 2, window.innerWidth  - w));
+    const top  = Math.max(0, Math.min(clientY - h / 2, window.innerHeight - h));
+
+    this.el.style.transition = 'left 0.25s ease, top 0.25s ease';
     this.el.style.bottom = 'auto';
-    this.el.style.right = 'auto';
-    this.el.style.left = this.origLeft + 'px';
-    this.el.style.top = this.origTop + 'px';
-    this.el.style.transition = 'none';
-  }
+    this.el.style.right  = 'auto';
+    this.el.style.left   = left + 'px';
+    this.el.style.top    = top  + 'px';
+    setTimeout(() => { this.el.style.transition = ''; }, 250);
 
-  _onMove(clientX, clientY) {
-    if (!this.dragging) return;
-
-    const deltaX = clientX - this.startX;
-    const deltaY = clientY - this.startY;
-
-    let newLeft = this.origLeft + deltaX;
-    let newTop = this.origTop + deltaY;
-
-    // clamp to viewport
-    const rect = this.el.getBoundingClientRect();
-    newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - rect.width));
-    newTop = Math.max(0, Math.min(newTop, window.innerHeight - rect.height));
-
-    this.el.style.left = newLeft + 'px';
-    this.el.style.top = newTop + 'px';
-  }
-
-  _onEnd() {
-    if (!this.dragging) return;
-    this.dragging = false;
     this._savePosition();
+    this._exitPlaceMode();
   }
 
   _savePosition() {
     localStorage.setItem('characterPos', JSON.stringify({
       left: this.el.style.left,
-      top: this.el.style.top,
+      top:  this.el.style.top,
     }));
   }
 
   _loadPosition() {
-    const saved_pos = localStorage.getItem('characterPos');
+    const saved = localStorage.getItem('characterPos');
     if (!saved) return;
     try {
-      const { left, top } = JSON.parse(saved_pos);
+      const { left, top } = JSON.parse(saved);
       this.el.style.bottom = 'auto';
-      this.el.style.right = 'auto';
-      this.el.style.left = left;
-      this.el.style.top = top;
+      this.el.style.right  = 'auto';
+      this.el.style.left   = left;
+      this.el.style.top    = top;
     } catch (e) {
-      console.error('Error loading character position:', e);
+      console.error('Could not load character position:', e);
     }
   }
 
   reset() {
-    localStorage.removeItem('characterPos');
-    this.el.style.transition = 'left 0.4s ease, top 0.4s ease';
-    this.el.style.left = '2rem';
-    this.el.style.top = 'auto';
-    this.el.style.bottom = '2rem';
-    this.el.style.right = 'auto';
-    setTimeout(() => { this.el.style.transition = ''; }, 400);
+    const title   = document.querySelector('.title');
+    const floatEl = this.el;
+
+    if (title) {
+      const titleRect = title.getBoundingClientRect();
+      const floatRect = floatEl.getBoundingClientRect();
+      const newLeft   = titleRect.left + titleRect.width / 2 - floatRect.width / 2;
+      const newTop    = titleRect.bottom + 16;
+
+      localStorage.removeItem('characterPos');
+      floatEl.style.transition = 'left 0.4s ease, top 0.4s ease';
+      floatEl.style.bottom = 'auto';
+      floatEl.style.right  = 'auto';
+      floatEl.style.left   = newLeft + 'px';
+      floatEl.style.top    = newTop  + 'px';
+      setTimeout(() => { floatEl.style.transition = ''; }, 400);
+    } else {
+      localStorage.removeItem('characterPos');
+      floatEl.style.transition = 'left 0.4s ease, top 0.4s ease';
+      floatEl.style.left   = '2rem';
+      floatEl.style.top    = 'auto';
+      floatEl.style.bottom = '2rem';
+      floatEl.style.right  = 'auto';
+      setTimeout(() => { floatEl.style.transition = ''; }, 400);
+    }
   }
 }
 
 // Card Classification
+// everything else would be considered negative or cautionary
 const POSITIVE_CARD_IDS = new Set([1, 2, 3, 6, 8, 10, 14, 17, 19, 20, 21]);
+
+function isPositiveReading(drawnCards) {
+  // a reading is "good" if at least 2 of the drawn cards are in the POSITIVE_CARD_IDS set and are upright
+  const positiveCount = drawnCards.filter(
+    (d) => !d.reversed && POSITIVE_CARD_IDS.has(d.card.id)
+  ).length;
+  return positiveCount > drawnCards.length / 2;
+}
+
+// helpers
+function pick(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function sleep(ms) {
+  return new Promise((res) => setTimeout(res, ms));
+}
+
+function pad(n) {
+  return String(n).padStart(2, '0');
+}
+
+// tarot image path
+function cardImagePath(card) {
+  const name = card.filename.replace('.png', '').replace(/ /g, '_');
+  return `resources/tarot/${pad(card.id)}-${name}.png`;
+}
+
+// TODO: Reading Mode Toggle
+
+// Character Controller
+class CharacterController {
+  constructor() {
+    this.gif = document.getElementById('character-gif');
+    this.bubble = document.getElementById('speech-bubble');
+    this.speech = document.getElementById('character-speech');
+    this.sprite = document.querySelector('.character-sprite');
+
+    this.charKey = null;
+    this.cfg = null;
+    this.bubbleTimer = null;
+    this.bonking = false;
+    this.locked = false;
+
+    this._setupClickZones();  // for interaction
+                              // might collide with movement script
+  }
+
+  // startup gif and lines
+  init() {
+    const isYomi = Math.random() < 0.10; // 10% chance for Yomi instead of Alice
+    this.charKey = isYomi ? 'yomi' : 'alice';
+    this.cfg = CHARACTERS[this.charKey];
+
+    const startGif = pick(this.cfg.startup);
+    this._setGif(startGif);
+    this.speak(pick(this.cfg.startupLines));
+  }
+
+  // gif helper
+  _setGif(filename) {
+    if (this.gif) this.gif.src = `${this.cfg.folder}/${filename}`;
+  }
+
+  _setIdle() {
+    this._setGif(pick(this.cfg.idle));
+  }
+
+  // speech bubble helper
+  speak(text, durationMs = 4000) {
+    if (!this.speech || !this.bubble) return;
+
+    clearTimeout(this.bubbleTimer);
+    this.speech.textContent = text;
+    this.bubble.classList.add('active');
+
+    if (durationMs > 0) {
+      this.bubbleTimer = setTimeout(() => {
+        this.bubble.classList.remove('active');
+      }, durationMs);
+    }
+  }
+
+  hideSpeech() {
+    clearTimeout(this.bubbleTimer);
+    if (this.bubble) this.bubble.classList.remove('active');
+  }
+
+  // click zone helper
+  _setupClickZones() {
+    if (!this.sprite) return;
+
+    this.sprite.addEventListener('click', (e) => {
+      if (this.bonking || this.locked) return;
+
+      const rect = this.gif.getBoundingClientRect();
+      const relY = (e.clientY - rect.top) / rect.height;
+
+      if (relY < 0.35) {
+        this._bonk();
+      } else {
+        this._poke();
+      }
+    });
+  }
+
+  _poke() {
+    this.speak(pick(this.cfg.clickLines));
+  }
+
+  async _bonk() {
+    if (this.bonking) return;
+
+    this.bonking = true;
+    new Audio('resources/bonk.ogg').play();
+    this.speak(pick(this.cfg.bonkLines), 0);
+
+    // play 'smash' animation
+    this._setGif(pick(this.cfg.smash));
+    await sleep(1000);
+
+    this._setGif(pick(this.cfg.angry));
+    await sleep(2500);
+
+    this._setIdle();
+    this.hideSpeech();
+    this.bonking = false;
+  }
+}
+
+// boot
+document.addEventListener('DOMContentLoaded', () => {
+  new CharacterPlacer();
+  const controller = new CharacterController();
+  controller.init();
+});
