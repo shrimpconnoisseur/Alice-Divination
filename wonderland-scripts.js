@@ -1,22 +1,7 @@
-// Sign-up bubble toggle
-const signupBubble   = document.getElementById('bubble-signup');
-const signupDropdown = document.getElementById('signup-dropdown');
+'use strict';
 
-signupBubble?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  signupDropdown.classList.toggle('open');
-  signupBubble.classList.toggle('active');
-});
-
-signupDropdown?.addEventListener('click', (e) => {
-  e.stopPropagation();
-});
-
-// Close when clicking anywhere else
-document.addEventListener('click', () => {
-  signupDropdown?.classList.remove('open');
-  signupBubble?.classList.remove('active');
-});
+// TODO: Implement in both HTML and JS
+// function initDisclaimer() {}
 
 // Character Configs
 const CHARACTERS = {
@@ -65,6 +50,10 @@ const CHARACTERS = {
       "I'll increase the payment for this!",
       "Can you NOT?!",
       "This won't change your results!",
+    ],
+    errorLines: [
+      "Umm... I swear this doesn't happen often!",
+      "Oops, I might have left my cards at home...",
     ],
   },
 
@@ -117,6 +106,10 @@ const CHARACTERS = {
       "T-That's not very nice!",
       "Was there something wrong with the cards?",
       "I can get mad too, you know!",
+    ],
+    errorLines: [
+      "Did something happen to the cards? That's not good...",
+      "That phantom must have taken back her cards. Oh well...",
     ],
   },
 };
@@ -299,11 +292,74 @@ function pad(n) {
 
 // tarot image path
 function cardImagePath(card) {
-  const name = card.filename.replace('.png', '').replace(/ /g, '_');
+  const name = card.title.replace(/\s+/g, '');
   return `resources/tarot/${pad(card.id)}-${name}.png`;
 }
 
-// TODO: Reading Mode Toggle
+// Reading Mode Toggle
+class ReadingModeToggle {
+  constructor(onChange) {
+    this.isThreeCard = false;
+    this.onChange = onChange;
+    this.track = document.getElementById('reading-toggle');
+    this.labelSingle = document.getElementById('label-single');
+    this.labelThree = document.getElementById('label-three');
+    this.cardPast = document.querySelector('[data-position="past"]');
+    this.cardFuture = document.querySelector('[data-position="future"]');
+    this.presentLabel = document.querySelector('[data-position="present"] .position-label');
+
+    if (this.track) {
+      this.track.addEventListener('click', () => this.toggle());
+    }
+
+    this.apply(false); // default to single card mode
+  }
+
+  toggle() {
+    this.apply(!this.threeCard);
+  }
+
+  apply(threeCard) {
+    this.isThreeCard = threeCard;
+
+    if (this.track) {
+      this.track.classList.toggle('three-card', threeCard);
+    }
+    if (this.labelSingle) {
+      this.labelSingle.classList.toggle('active', !threeCard);
+    }
+    if (this.labelThree) {
+      this.labelThree.classList.toggle('active', threeCard);
+    }
+
+    const fade = threeCard ? '1' : '0';
+    const scale = threeCard ? 'scale(1)' : 'scale(0.85)';
+    const ptr = threeCard ? '' : 'none';
+
+    for (const el of [this.cardPast, this.cardFuture]) {
+      if (!el) continue;
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      el.style.opacity = fade;
+      el.style.transform = scale;
+      el.style.pointerEvents = ptr;
+    }
+
+    if (this.presentLabel) {
+      this.presentLabel.textContent = threeCard ? 'Present' : 'Daily Fortune';
+    }
+
+    if (this.onChange) {
+      this.onChange(threeCard);
+    }
+  }
+
+  setLocked(locked) {
+    if (this.track) {
+      this.track.style.pointerEvents = locked ? 'none' : '';
+      this.track.style.opacity = locked ? '0.5' : '';
+    }
+  }
+}
 
 // Character Controller
 class CharacterController {
@@ -402,13 +458,365 @@ class CharacterController {
     this.hideSpeech();
     this.bonking = false;
   }
+
+  // Reading Reactions
+  reactToReading(drawnCards) {
+    const positive = isPositiveReading(drawnCards);
+
+    if (positive) {
+      this._setGif(pick(this.cfg.happy));
+      this.speak(pick(this.cfg.goodDrawLines), 6000);
+    } else {
+      if (this.charKey === 'alice') {
+        this._setGif(pick(this.cfg.taunt));
+        this.speak(pick(this.cfg.badDrawLines), 6000);
+      } else {
+        this._setGif(pick(this.cfg.sad));
+        this.speak(pick(this.cfg.badDrawLines), 6000);
+      }
+    }
+  }
+
+  reactToSingleCard(drawn) {
+    this.reactToReading([drawn]);
+  }
+
+  // Lock function during draw sequences
+  setLocked(locked) {
+    this.locked = locked;
+  }
+
+  returnToIdle() {
+    this._setIdle();
+  }
 }
 
-// a lot more needs to go here of course
+// Tarot Reading
+class TarotReading {
+  constructor() {
+    this.cards = [];
+    this.reading = null;
+    
+    this.character = new CharacterController();
+    this.toggle = new ReadingModeToggle((isThree) => {
+      if (this.reading) this._resetBoard();
+    });
+
+    this.init();
+  }
+
+  async init() {
+    await this._loadCards();
+    this.character.init();
+    this._setupEventListeners();
+    this._checkCooldown();
+  }
+
+  async _loadCards() {
+    try {
+      const res = await fetch('tarot-cards.json');
+      const data = await res.json();
+      this.cards = data.cards;
+    } catch (err) {
+      console.error('Failed to load tarot cards:', err);
+      this.character._setGif(pick(this.character.cfg.surprised));
+      this.character.speak(pick(this.character.cfg.errorLines), 8000);
+    }
+  }
+
+  _setupEventListeners() {
+    const drawBtn = document.querySelector('.draw-button');
+    const closeBtn = document.getElementById('close-modal');
+    const modal = document.getElementById('card-modal');
+
+    if (drawBtn) {
+      drawBtn.addEventListener('click', () => this._performReading());
+    }
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => this._closeModal());
+    }
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) this._closeModal();
+      });
+    }
+
+    document.querySelectorAll('.card-wrapper').forEach((wrapper) => {
+      wrapper.addEventListener('click', () => {
+        const pos = wrapper.closest('.card-position')?.dataset.position;
+        if (!pos || !this.reading) return;
+        const drawn = this.reading.find((d) => d.position === pos);
+        if (drawn && wrapper.classList.contains('flipped')) {
+          this._openModal(drawn);
+        }
+      });
+    });
+  }
+
+  _cooldownKey() {
+    return 'wonderland_last_reading';
+  }
+
+  // Include a timer where the status text is.
+  // The _setStatus call if the user has already drawn today should be appended underneath the timer.
+  _checkCooldown() {
+    const last = localStorage.getItem(this._cooldownKey());
+    const drawBtn = document.querySelector('.draw-button');
+    if (!drawBtn) return;
+
+    if (last) {
+      const lastDate = new Date(parseInt(last, 10));
+      const today = new Date();
+      const sameDay = 
+        lastDate.getDate() === today.getDate() &&
+        lastDate.getMonth() === today.getMonth() &&
+        lastDate.getFullYear() === today.getFullYear();
+      
+      if (sameDay) {
+        drawBtn.disabled = true;
+        this._setStatus("You've already drawn your fortune today. Come back tomorrow!");
+        this._restoreLastReading();
+        return;
+      }
+    }
+
+    drawBtn.disabled = false;
+    this._setStatus("Let Alice perform a divination to see the reading status!");
+  }
+
+  _setStatus(text) {
+    const el = document.getElementById('status-text');
+    if (el) el.textContent = text;
+  }
+
+  _drawCards(count) {
+    const shuffled = [...this.cards].sort(() => Math.random() - 0.5);
+    const positions = count === 1
+      ? ['present']
+      : ['past', 'present', 'future'];
+    
+    return shuffled.slice(0, count).map((card, i) => ({
+      card,
+      reversed: Math.random() < 0.33,
+      position: positions[i],
+    }));
+  }
+
+  async _performReading() {
+    if (this.cards.length === 0) return;
+
+    const count = this.toggle.isThreeCard ? 3 : 1;
+    this.reading = this._drawCards(count);
+
+    // Lock UI
+    const drawBtn = document.querySelector('.draw-button');
+    if (drawBtn) drawBtn.disabled = true;
+    this.toggle.setLocked(true);
+    this.character.setLocked(true);
+
+    this._setStatus("The cards are being drawn...");
+
+    // Flip
+    for (const drawn of this.reading) {
+      await sleep(400);
+      this._flipCard(drawn);
+    }
+
+    await sleep(800);
+
+    // React
+    this.character.reactToReading(this.reading);
+
+    // Status Summary
+    const names = this.reading.map(
+      (d) => `${d.card.title}${d.reversed ? ' (R)' : ''}`
+    ).join(' . ');
+    this._setStatus(`Reading: ${names} - click a card for details!`);
+
+    // Persist
+    localStorage.setItem(this._cooldownKey(), Date.now().toString());
+    localStorage.setItem('wonderland_last_reading_data', JSON.stringify(this.reading.map((d) => ({
+      cardId: d.card.id,
+      position: d.position,
+      reversed: d.reversed,
+    }))));
+
+    // Swap Draw to Reset
+    this._swapToReset(drawBtn);
+
+    this.character.setLocked(false);
+    this.toggle.setLocked(false);
+  }
+
+  _flipCard(drawn) {
+    const wrapper = document.getElementById(`card-${drawn.position}`);
+    if (!wrapper) return;
+
+    // front face
+    const front = document.createElement('div');
+    front.className = 'card-front';
+    if (drawn.reversed) front.classList.add('reversed');
+
+    const img = document.createElement('img');
+    img.src = cardImagePath(drawn.card);
+    img.alt = drawn.card.title;
+    front.appendChild(img);
+
+    wrapper.appendChild(front);
+    wrapper.classList.add('flipped', 'clickable');
+  }
+
+  _restoreLastReading() {
+    const raw = localStorage.getItem('wonderland_last_reading_data');
+    if (!raw || this.cards.length === 0) return;
+
+    try {
+      const saved = JSON.parse(raw);
+      this.reading = saved.map(({ cardId, reversed, position }) => ({
+        card: this.cards.find((c) => c.id === cardId),
+        reversed,
+        position,
+      })).filter((d) => d.card);
+
+      const isThree = this.reading.length === 3;
+      this.toggle.apply(isThree);
+
+      for (const drawn of this.reading) {
+        this._flipCard(drawn);
+      }
+
+      const names = this.reading.map(
+        (d) => `${d.card.title}${d.reversed ? ' (R)' : ''}`
+      ).join(' . ');
+      this._setStatus(`Last Reading: ${names} - click a card for details!`);
+
+      const drawBtn = document.querySelector('.draw-button');
+      this._swapToReset(drawBtn);
+    } catch (err) {
+      console.warn('Failed to restore last reading:', err);
+    }
+  }
+
+  _resetBoard() {
+    this.reading = null;
+    ['past', 'present', 'future'].forEach((pos) => {
+      const wrapper = document.getElementById(`card-${pos}`);
+      if (!wrapper) return;
+      wrapper.classList.remove('flipped', 'clickable');
+
+      // remove injected front face
+      const front = wrapper.querySelector('.card-front');
+      if (front) front.remove();
+    });
+
+    this.character.returnToIdle();
+    this.character.hideSpeech();
+    this.toggle.setLocked(false);
+    this._checkCooldown();
+  }
+
+  _swapToReset(drawBtn) {
+    if (!drawBtn) return;
+    drawBtn.textContent = 'Reset';
+    drawBtn.disabled = false;
+
+    // replace listener
+    const fresh = drawBtn.cloneNode(true);
+    drawBtn.parentNode.replaceChild(fresh, drawBtn);
+    
+    fresh.addEventListener('click', () => {
+      fresh.textContent = 'Draw Cards';
+      const next = fresh.cloneNode(true);
+      fresh.parentNode.replaceChild(next, fresh);
+      next.addEventListener('click', () => this._performReading());
+      this._resetBoard();
+    });
+  }
+
+  _openModal(drawn) {
+    const { card, reversed, position } = drawn;
+    const modal = document.getElementById('card-modal');
+    if (!modal) return;
+
+    // card img
+    const imgEl = document.getElementById('modal-card-img');
+    if (imgEl) {
+      imgEl.src = cardImagePath(card);
+      imgEl.alt = card.title;
+      imgEl.style.transform = reversed ? 'rotate(180deg)' : '';
+    }
+
+    // reversed indicator
+    const revInd = document.getElementById('reversed-indicator');
+    if (revInd) revInd.style.display = reversed ? 'block' : 'none';
+
+    // card name
+    const nameEl = document.getElementById('modal-card-name');
+    if (nameEl) nameEl.textContent = card.title;
+
+    // overall meaning
+    const overallEl = document.getElementById('modal-overall-meaning');
+    if (overallEl) {
+      overallEl.textContent = reversed
+        ? card.reversed.overall
+        : card.upright.overall;
+    }
+
+    // temporal interpretation
+    const temporalTitle = document.getElementById('modal-temporal-title');
+    const temporalEl = document.getElementById('modal-temporal-meaning');
+
+    const posLabel = {
+      past: 'Past',
+      present: this.toggle.isThreeCard ? 'Present' : 'Daily Fortune',
+      future: 'Future',
+    }[position] ?? 'Interpretation';
+
+    if (temporalTitle) temporalTitle.textContent = posLabel;
+    if (temporalEl) {
+      const temporal = reversed
+        ? card.reversed[position] ?? card.reversed.overall
+        : card.upright[position] ?? card.upright.overall;
+      temporalEl.textContent = temporal;
+    }
+
+    // reversed
+    const reversedSection = document.getElementById('reversed-meaning-section');
+    const reversedEl = document.getElementById('modal-reversed-meaning');
+    if (reversedSection) reversedSection.style.display = reversed ? 'block' : 'none';
+    if (reversedEl) reversedEl.textContent = card.reversed.overall;
+
+    modal.classList.add('active');
+  }
+
+  _closeModal() {
+    const modal = document.getElementById('card-modal');
+    if (modal) modal.classList.remove('active');
+  }
+}
+
+// Sign-up bubble toggle
+const signupBubble   = document.getElementById('bubble-signup');
+const signupDropdown = document.getElementById('signup-dropdown');
+
+signupBubble?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  signupDropdown.classList.toggle('open');
+  signupBubble.classList.toggle('active');
+});
+
+signupDropdown?.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
+// Close when clicking anywhere else
+document.addEventListener('click', () => {
+  signupDropdown?.classList.remove('open');
+  signupBubble?.classList.remove('active');
+});
 
 // boot
 document.addEventListener('DOMContentLoaded', () => {
-  const controller = new CharacterController();
   new CharacterPlacer();
-  controller.init();
+  new TarotReading();
 });
