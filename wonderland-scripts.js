@@ -680,10 +680,11 @@ class TarotReading {
     const wrapper = document.getElementById(`card-${drawn.position}`);
     if (!wrapper) return;
 
+    wrapper.querySelector('.card-front')?.remove();
+
     // front face
     const front = document.createElement('div');
     front.className = 'card-front';
-    front.style.position = 'absolute';
     if (drawn.reversed) front.classList.add('reversed');
 
     const img = document.createElement('img');
@@ -768,6 +769,7 @@ class TarotReading {
     if (!modal) return;
 
     // card img
+    // this is broken
     const imgEl = document.getElementById('modal-card-img');
     if (imgEl) {
       imgEl.src = cardImagePath(card);
