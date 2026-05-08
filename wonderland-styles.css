@@ -104,7 +104,7 @@ body::after {
 /* CONTROLLER BUBBLES */
 .controller-bubbles {
   position:fixed;
-  top: 1.4rem;
+  bottom: 1.5rem;
   left: 1.6rem;
   display: flex;
   gap: 0.75rem;
@@ -118,8 +118,8 @@ body::after {
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%,
     rgba(107, 78, 154, 0.85) 0%,
@@ -169,7 +169,7 @@ body::after {
 
 .controller-bubble-label {
   font-family: "AliceFont", cursive;
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--golden);
@@ -194,8 +194,8 @@ body::after {
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%,
     rgba(107, 78, 154, 0.85) 0%,
@@ -250,7 +250,7 @@ body::after {
 
 .nav-bubble-label {
   font-family: "AliceFont", cursive;
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--golden);
@@ -267,7 +267,7 @@ body::after {
   position: absolute;
   top: calc(100% + 12px);
   right: 0;
-  width: 220px;
+  width: 280px;
   background: linear-gradient(145deg,
     rgba(45, 27, 78, 0.97) 0%,
     rgba(10, 14, 39, 0.97) 100%);
@@ -316,7 +316,7 @@ body::after {
 
 .signup-title {
   font-family: "AliceFont", cursive;
-  font-size: 1.15rem;
+  font-size: 1.4rem;
   color: var(--golden);
   text-align: center;
   text-shadow: 0 0 10px rgba(244, 208, 63, 0.5);
@@ -331,7 +331,7 @@ body::after {
 
 .signup-field label {
   font-family: "AliceFont", cursive;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: var(--alice-cyan);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -340,12 +340,12 @@ body::after {
 
 .signup-field input {
   font-family: "AliceFont", cursive;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   background: rgba(10, 14, 39, 0.6);
   border: 1.5px solid rgba(107, 78, 154, 0.6);
   border-radius: 8px;
   color: var(--silver);
-  padding: 0.5rem 0.7rem;
+  padding: 0.65rem 0.85rem;
   outline: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   width: 100%;
@@ -363,12 +363,12 @@ body::after {
 
 .signup-submit {
   font-family: "AliceFont", cursive;
-  font-size: 1rem;
+  font-size: 1.25rem;
   background: linear-gradient(135deg, var(--mystic-purple), var(--deep-purple));
   color: var(--golden);
   border: 1.5px solid rgba(244, 208, 63, 0.55);
   border-radius: 8px;
-  padding: 0.5rem 0;
+  padding: 0.65rem 0;
   cursor: pointer;
   width: 100%;
   margin-top: 0.2rem;
@@ -413,7 +413,7 @@ body::after {
 }
 
 #character-gif { 
-  width: 260px;
+  width: 300px;
   height: auto;
   display: block;
   animation: gentleFloat 3s ease-in-out infinite;
@@ -502,7 +502,7 @@ body::after {
 }
 
 #character-speech {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: var(--silver);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   line-height: 1.4;
@@ -515,7 +515,7 @@ body::after {
 }
 
 .title {
-  font-size: 4rem;
+  font-size: 5rem;
   color: var(--golden);
   text-shadow:
     0 0 20px rgba(244, 208, 63, 0.8),
@@ -554,7 +554,7 @@ body::after {
 }
 
 #status-text {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: var(--alice-cyan);
   text-shadow: 0 2px 8px rgba(277, 217, 232, 0.6);
 }
@@ -577,7 +577,7 @@ body::after {
 }
 
 .position-label {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--golden);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -585,8 +585,8 @@ body::after {
 }
 
 .card-wrapper {
-  width: 200px;
-  height: 350px;
+  width: 240px;
+  height: 420px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -768,8 +768,8 @@ body::after {
 /* DRAW CARDS BUTTON */
 .draw-button {
   font-family: "AliceFont", cursive;
-  font-size: 1.8rem;
-  padding: 1.2rem 3rem;
+  font-size: 2.1rem;
+  padding: 1.4rem 3.5rem;
   background: linear-gradient(135deg, var(--mystic-purple) 0%, var(--deep-purple) 100%);
   color: var(--golden);
   border: 3px solid var(--golden);
@@ -949,6 +949,242 @@ body::after {
   border-left-color: var(--alice-cyan);
 }
 
+/* SETTINGS BUBBLE */
+.settings-bubble {
+  position: fixed;
+  top: 1.4rem;
+  left: 1.6rem;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%,
+    rgba(107, 78, 154, 0.85) 0%,
+    rgba(10, 14, 39, 0.92) 100%);
+  border: 2px solid rgba(244, 208, 63, 0.45);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(107, 78, 154, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  color: var(--silver);
+  animation: bubbleFloat 4s ease-in-out infinite;
+  animation-delay: 1.8s;
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.settings-bubble::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 18%;
+  width: 30%;
+  height: 18%;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.settings-bubble:hover {
+  border-color: var(--golden);
+  box-shadow:
+    0 6px 28px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(244, 208, 63, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation-play-state: paused;
+  transform: translateY(-4px) scale(1.08);
+}
+
+.settings-bubble-label {
+  font-family: "AliceFont", cursive;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--golden);
+  opacity: 0.85;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* SETTINGS PANEL */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 39, 0.5);
+  z-index: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.settings-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.settings-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background: linear-gradient(160deg, rgba(45, 27, 78, 0.98) 0%, rgba(10, 14, 39, 0.99) 100%);
+  border-right: 2px solid rgba(244, 208, 63, 0.5);
+  box-shadow:
+    8px 0 40px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(107, 78, 154, 0.3);
+  z-index: 601;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+  overflow-y: auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.settings-panel.open {
+  transform: translateX(0);
+}
+
+.settings-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(244, 208, 63, 0.25);
+}
+
+.settings-panel-title {
+  font-family: "AliceFont", cursive;
+  font-size: 1.4rem;
+  color: var(--golden);
+  text-shadow: 0 0 12px rgba(244, 208, 63, 0.5);
+}
+
+.settings-close {
+  font-size: 2rem;
+  color: var(--golden);
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.settings-close:hover {
+  color: var(--alice-cyan);
+  transform: rotate(90deg);
+}
+
+.settings-section-title {
+  font-family: "AliceFont", cursive;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--alice-cyan);
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background: rgba(107, 78, 154, 0.15);
+  border: 1px solid rgba(107, 78, 154, 0.3);
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.settings-item-label {
+  font-family: "AliceFont", cursive;
+  font-size: 1rem;
+  color: var(--silver);
+}
+
+/* LARGE UI MODE */
+/* increase most things by about 40px? */
+body.large-ui .card-wrapper {
+  width: 280px;
+  height: 460px;
+}
+
+body.large-ui .controller-bubble,
+body.large-ui .nav-bubble,
+body.large-ui .settings-bubble {
+  width: 120px;
+  height: 120px;
+}
+
+body.large-ui .controller-bubble-label,
+body.large-ui .nav-bubble-label,
+body.large-ui .settings-bubble-label {
+  font-size: 1.2rem;
+}
+
+body.large-ui .title {
+  font-size: 6.5rem;
+}
+
+body.large-ui #status-text {
+  font-size: 2rem;
+}
+
+body.large-ui .position-label {
+  font-size: 2.5rem;
+}
+
+body.large-ui .draw-button {
+  font-size: 2.5rem;
+  padding: 1.8rem 4.5rem;
+}
+
+body.large-ui .speech-bubble {
+  width: 350px;
+  font-size: 1.4rem;
+  padding: 1.5rem 2rem;
+}
+
+body.large-ui #character-speech {
+  font-size: 1.5rem;
+}
+
+body.large-ui .signup-dropdown {
+  width: 360px;
+}
+
+body.large-ui .signup-title {
+  font-size: 1.8rem;
+}
+
+body.large-ui .signup-field label {
+  font-size: 1.1rem;
+}
+
+body.large-ui .signup-field input {
+  font-size: 1.35rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+}
+
+body.large-ui .signup-submit {
+  font-size: 1.5rem;
+  padding: 0.8rem 0;
+  border-radius: 10px;
+}
+
+body.large-ui .signup-dropdown-inner {
+  gap: 1.2rem;
+}
+
 /* RESPONSIVE DESIGNS */
 @media (max-width: 2000px) {
   .character-float #character-gif {
@@ -961,7 +1197,7 @@ body::after {
     left: 50%;
     transform: translateX(-50%) scale(0);
     transform-origin: top center;
-    width: 240px;
+    width: 320px;
   }
 
   .speech-bubble.active {
@@ -997,17 +1233,17 @@ body::after {
 
   .controller-bubbles {
     gap: 0.5rem;
-    top: 1rem;
-    right: 1rem;
+    bottom: 1rem;
+    left: 1.6rem;
   }
 
   .controller-bubble {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
   }
 
   .controller-bubble-label {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   .nav-bubbles {
@@ -1017,16 +1253,25 @@ body::after {
   }
 
   .nav-bubble {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
   }
 
   .nav-bubble-label {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   .signup-dropdown {
-    width: 200px;
+    width: 280px;
+  }
+
+  .settings-bubble {
+    width: 90px;
+    height: 90px;
+  }
+
+  .settings-bubble-label {
+    font-size: 0.85rem;
   }
 }
 

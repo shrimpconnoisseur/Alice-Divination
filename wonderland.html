@@ -17,6 +17,45 @@
   <body>
     <!-- ADD A DISCLAIMER SOMEWHERE! -->
 
+    <!-- SETTINGS BUBBLE - top-left -->
+     <div class="settings-bubble" id="settings-bubble" title="Settings">
+      <span class="settings-bubble-label">Settings</span>
+     </div>
+
+    <!-- SETTINGS OVERLAY + PANEL -->
+     <div class="settings-overlay" id="settings-overlay"></div>
+     <div class="settings-panel" id="settings-panel" aria-label="Settings panel">
+      <div class="settings-panel-header">
+        <span class="settings-panel-title" style="padding:20px; text-align:center;">Settings</span>
+        <span class="settings-close" id="settings-close">&times;</span>
+      </div>
+
+      <div>
+        <p class="settings-section-title">Character</p>
+        <div class="settings-item">
+          <span class="settings-item-label">Show Character</span>
+          <input type="checkbox" checked>
+        </div>
+        <!--TODO: JS -->
+        <div class="settings-item">
+          <span class="settings-item-label">Character Scale</span>
+          <input type="range" min="50" max="150" value="100">
+        </div>
+      </div>
+
+      <div>
+        <p class="settings-section-title">Display</p>
+        <div class="settings-item">
+          <span class="settings-item-label">High Contrast Mode</span>
+          <input type="checkbox">
+        </div>
+        <div class="settings-item">
+          <span class="settings-item-label">Large UI</span>
+          <input type="checkbox" id="settings-large-ui">
+        </div>
+      </div>
+     </div>
+
     <!-- CHARACTER CONTROLLER BUBBLES -->
      <nav class="controller-bubbles" aria-label="Character manipulation">
       <div class="controller-bubble" id="bubble-reset-char" title="Reset Character Position">
@@ -29,11 +68,11 @@
 
     <!-- NAVIGATION BUBBLES -->
      <nav class="nav-bubbles" aria-label="Site navigation">
-      <a href="deck.html" class="nav-bubble" id="bubble-deck" title="View Full Deck">
+      <a href="wonderland-deck.html" class="nav-bubble" id="bubble-deck" title="View Full Deck">
         <span class="nav-bubble-label">Full Deck</span>
       </a>
 
-      <a href="history.html" class="nav-bubble" id="bubble-history" title="Past Divinations">
+      <a href="wonderland-history.html" class="nav-bubble" id="bubble-history" title="Past Divinations">
         <span class="nav-bubble-label">History</span>
       </a>
 

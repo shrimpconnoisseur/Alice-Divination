@@ -55,6 +55,13 @@ const CHARACTERS = {
       "Umm... I swear this doesn't happen often!",
       "Oops, I might have left my cards at home...",
     ],
+    // used for dev mode password, will react if the user guesses it right or wrong
+    correctGuessLines: [
+      "",
+    ],
+    incorrectGuessLines: [
+      "",
+    ],
   },
 
   yomi: {
@@ -62,10 +69,10 @@ const CHARACTERS = {
     idle: ['yomi_idle1.gif', 'yomi_idle2.gif'],
     startup: ['yomi_happy1.gif', 'yomi_happy2.gif', 'yomi_idle1.gif', 'yomi_idle2.gif', 'yomi_dance.gif'],
     happy: ['yomi_happy1.gif', 'yomi_happy2.gif'],
-    taunt: ['yomi_dance.gif'], // Yomi is too kind to taunt! Instead, default to dance?
+    taunt: ['yomi_dance.gif'],
     sad: ['yomi_sad1.gif', 'yomi_sad2.gif'],
     surprised: ['yomi_surprised.gif'],
-    ignore: ['yomi_surprised.gif'], // Yomi is too kind to ignore! Instead, just default to surprised?
+    ignore: ['yomi_surprised.gif'],
     smash: ['yomi_smash.gif'],
     angry: ['yomi_angry1.gif', 'yomi_angry2.gif'],
     ouch: ['yomi_ouch.gif'],
@@ -110,6 +117,12 @@ const CHARACTERS = {
     errorLines: [
       "Did something happen to the cards? That's not good...",
       "That phantom must have taken back her cards. Oh well...",
+    ],
+    correctGuessLines: [
+      "",
+    ],
+    incorrectGuessLines: [
+      "",
     ],
   },
 };
@@ -814,6 +827,40 @@ document.addEventListener('click', () => {
   signupDropdown?.classList.remove('open');
   signupBubble?.classList.remove('active');
 });
+
+// settings panel toggle
+const settingsBubble = document.getElementById('settings-bubble');
+const settingsPanel  = document.getElementById('settings-panel');
+const settingsOverlay = document.getElementById('settings-overlay');
+const settingsClose = document.getElementById('settings-close');
+
+function openSettings() {
+  settingsPanel.classList.add('open');
+  settingsOverlay.classList.add('active');
+}
+
+function closeSettings() {
+  settingsPanel.classList.remove('open');
+  settingsOverlay.classList.remove('active');
+}
+
+settingsBubble?.addEventListener('click', openSettings);
+settingsClose?.addEventListener('click', closeSettings);
+settingsOverlay?.addEventListener('click', closeSettings);
+
+// settings large ui toggle
+const largeUIToggle = document.getElementById('settings-large-ui');
+
+if (localStorage.getItem('wonderland_large_ui') === 'true') {
+  document.body.classList.add('large-ui');
+  if (largeUIToggle) largeUIToggle.checked = true;
+}
+
+largeUIToggle?.addEventListener('change', () => {
+  const enabled = largeUIToggle.checked;
+  document.body.classList.toggle('large-ui', enabled);
+  localStorage.setItem('wonderland_large_ui', enabled);
+})
 
 // boot
 document.addEventListener('DOMContentLoaded', () => {
