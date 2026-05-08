@@ -57,10 +57,14 @@ const CHARACTERS = {
     ],
     // used for dev mode password, will react if the user guesses it right or wrong
     correctGuessLines: [
-      "",
+      "Did the cards tell you the password?!",
+      "There's no way you guessed it without peeking at the code!",
+      "Are you that desperate to draw cards?",
     ],
     incorrectGuessLines: [
-      "",
+      "Keeping guessing, you almost had it!",
+      "Wow, you got it right! Just kidding, try again!",
+      "Maybe I should store all these guesses and make fun of you for them later...",
     ],
   },
 
@@ -119,10 +123,13 @@ const CHARACTERS = {
       "That phantom must have taken back her cards. Oh well...",
     ],
     correctGuessLines: [
-      "",
+      "Did the phantom tell you the password?",
+      "I didn't even know we had that...",
     ],
     incorrectGuessLines: [
-      "",
+      "What are you even trying to guess?",
+      "Huh? What's that box for?",
+      "Umm... take your time, I guess?",
     ],
   },
 };
@@ -575,6 +582,14 @@ class TarotReading {
   _checkCooldown() {
     const last = localStorage.getItem(this._cooldownKey());
     const drawBtn = document.querySelector('.draw-button');
+
+    if (document.body.classList.contains('dev-mode')) {
+      const drawBtn = document.querySelector('.draw-button');
+      if (drawBtn) drawBtn.disabled = false;
+      this._setStatus("Developer mode active!");
+      return;
+    }
+
     if (!drawBtn) return;
 
     if (last) {
@@ -862,8 +877,95 @@ largeUIToggle?.addEventListener('change', () => {
   localStorage.setItem('wonderland_large_ui', enabled);
 })
 
+/* dev mode: no 24hr cooldown */
+/* password is going to be exposed here but honestly i dont care */
+const dev_password = 'aliceiscute';
+
+const devToggle = document.getElementById('settings-dev-mode');
+const devPasswordField = document.getElementById('dev-password-field');
+const devPasswordInput = document.getElementById('dev-password-input');
+const devSettingsItem = devToggle?.closest('.settings-item');
+
+function _getCharacter() {
+  return window._tarotReading?.character ?? null;
+}
+
+function enableDevMode() {
+  document.body.classList.add('dev-mode');
+  localStorage.setItem('wonderland_dev_mode', 'true');
+
+  const drawBtn = document.querySelector('.draw-button');
+  if (drawBtn) drawBtn.disabled = false;
+
+  devSettingsItem?.classList.add('dev-active');
+  devPasswordField.classList.remove('visible');
+  devPasswordInput.value = '';
+
+  const character = _getCharacter();
+  if (character) {
+    character._setGif(pick(character.cfg.surprised));
+    character.speak(pick(character.cfg.correctGuessLines), 6000);
+  }
+}
+
+function disableDevMode(reactWithTaunt = false) {
+  document.body.classList.remove('dev-mode');
+  localStorage.removeItem('wonderland_dev_mode');
+
+  devToggle.checked = false;
+  devSettingsItem?.classList.remove('dev-active');
+  devPasswordField.classList.remove('visible');
+  devPasswordInput.value = '';
+
+  window._tarotReading?._checkCooldown();
+
+  if (reactWithTaunt) {
+    const character = _getCharacter();
+    if (character) {
+      character._setGif(pick(character.cfg.taunt));
+      character.speak(pick(character.cfg.incorrectGuessLines), 6000);
+    }
+  }
+}
+
+if (localStorage.getItem('wonderland_dev_mode') === 'true') {
+  document.body.classList.add('dev-mode');
+  if (devToggle) devToggle.checked = true;
+  devSettingsItem?.classList.add('dev-active');
+}
+
+devToggle?.addEventListener('change', () => {
+  if (devToggle.checked) {
+    devPasswordField.classList.add('visible');
+    devPasswordInput.focus();
+  } else {
+    disableDevMode();
+  }
+});
+
+devPasswordInput?.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const guess = devPasswordInput.value.trim();
+
+  if (guess === dev_password) {
+    enableDevMode();
+  } else {
+    disableDevMode(true);
+  }
+});
+
+devPasswordInput?.addEventListener('blur', () => {
+  setTimeout(() => {
+    if (devPasswordField.classList.contains('visible')) {
+      devToggle.checked = false;
+      devPasswordField.classList.remove('visible');
+      devPasswordInput.value = '';
+    }
+  }, 150);
+});
+
 // boot
 document.addEventListener('DOMContentLoaded', () => {
   new CharacterPlacer();
-  new TarotReading();
+  window._tarotReading = new TarotReading(); // exposed
 });

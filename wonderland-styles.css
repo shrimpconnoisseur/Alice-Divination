@@ -1110,6 +1110,48 @@ body::after {
   color: var(--silver);
 }
 
+.dev-password-field {
+  display: none;
+  margin-top: 0.4rem;
+  padding: 0 0.25rem;
+}
+
+.dev-password-field.visible {
+  display: block;
+}
+
+.dev-password-field input {
+  font-family: "AliceFont", cursive;
+  font-size: 1rem;
+  width: 100%;
+  background: rgba(10, 14, 39, 0.6);
+  border: 1.5px solid rgba(107, 78, 154, 0.6);
+  border-radius: 8px;
+  color: var(--silver);
+  padding: 0.6rem 0.8rem;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dev-password-field input::placeholder {
+  color: rgba(192, 192, 216, 0.35);
+  font-style: italic;
+}
+
+.dev-password-field input:focus {
+  border-color: var(--alice-cyan);
+  box-shadow: 0 0 10px rgba(77, 217, 232, 0.25);
+}
+
+#settings-dev-mode:checked ~ * {
+  /* handled via JS class */
+}
+
+.settings-item.dev-active {
+  border-color: rgba(77, 217, 232, 0.6);
+  background: rgba(77, 217, 232, 0.08);
+}
+
 /* LARGE UI MODE */
 /* increase most things by about 40px? */
 body.large-ui .card-wrapper {
