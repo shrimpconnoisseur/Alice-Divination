@@ -683,6 +683,7 @@ class TarotReading {
     // front face
     const front = document.createElement('div');
     front.className = 'card-front';
+    front.style.position = 'absolute';
     if (drawn.reversed) front.classList.add('reversed');
 
     const img = document.createElement('img');
