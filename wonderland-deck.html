@@ -4,11 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="tetra">
-    <title>Wonderland</title>
-		<link rel="icon" type="image/png" href="/resources/alice-icon.png">
+    <title>Wonderland - Deck</title>
+    <link rel="icon" type="image/png" href="/resources/alice-icon.png">
     <link rel="stylesheet" href="wonderland-styles.css">
+    <link rel="stylesheet" href="wonderland-deck-styles.css">
   </head>
   <body>
-    
+
+    <!-- SETTINGS BUBBLE -->
+    <div class="settings-bubble" id="settings-bubble" title="Settings">
+      <span class="settings-bubble-label">Settings</span>
+    </div>
+
+    <!-- SETTINGS OVERLAY + PANEL -->
+    <div class="settings-overlay" id="settings-overlay"></div>
+    <div class="settings-panel" id="settings-panel" aria-label="Settings panel">
+      <div class="settings-panel-header">
+        <span class="settings-panel-title">Settings</span>
+        <span class="settings-close" id="settings-close">&times;</span>
+      </div>
+      <div>
+        <p class="settings-section-title">Display</p>
+        <div class="settings-item">
+          <span class="settings-item-label">Large UI</span>
+          <input type="checkbox" id="settings-large-ui">
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV BUBBLES -->
+    <nav class="nav-bubbles" aria-label="Site navigation">
+      <a href="wonderland.html" class="nav-bubble" title="Back to Reading">
+        <span class="nav-bubble-label">Reading</span>
+      </a>
+      <a href="wonderland-history.html" class="nav-bubble" title="Past Divinations">
+        <span class="nav-bubble-label">History</span>
+      </a>
+    </nav>
+
+    <!-- DECK CONTAINER -->
+    <div class="wonderland-container">
+      <div class="tarot-card-container">
+        <h1 class="title">The Full Deck</h1>
+        <p class="deck-subtitle">All 22 cards of the Major Arcana</p>
+
+        <div class="deck-grid" id="deck-grid">
+          <!-- Cards injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD MODAL -->
+    <div class="modal" id="card-modal">
+      <div class="modal-content">
+        <span class="close-button" id="close-modal">&times;</span>
+        <div class="modal-body">
+          <div class="modal-card-display">
+            <img id="modal-card-image" src="" alt="Tarot Card">
+            <p class="reversed-indicator" id="reversed-indicator" style="display:none;">Reversed</p>
+          </div>
+          <div class="modal-card-info">
+            <h2 id="modal-card-name"></h2>
+            <div class="card-meaning">
+              <h3>Overall Interpretation</h3>
+              <p id="modal-overall-meaning"></p>
+            </div>
+            <div class="card-meaning">
+              <h3 id="modal-temporal-title">Upright</h3>
+              <p id="modal-temporal-meaning"></p>
+            </div>
+            <div class="card-meaning reversed-meaning" id="reversed-meaning-section">
+              <h3>Reversed Interpretation</h3>
+              <p id="modal-reversed-meaning"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="wonderland-deck-scripts.js"></script>
   </body>
 </html>

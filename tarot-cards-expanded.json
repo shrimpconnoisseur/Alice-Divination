@@ -1,0 +1,378 @@
+{
+  "cards": [
+    {
+      "id": 0,
+      "title": "The Fool",
+      "filename": "00-TheFool.png",
+      "upright": {
+        "overall": "New beginnings, innocence, spontaneity, and an open-hearted leap of faith. The Fool stands at the precipice of a great adventure, unburdened by past failures or future fears. This card embodies pure potential and the courage to step into the unknown with trust and wonder.",
+        "past": "A bold risk or fresh start you took — perhaps without a clear plan — set the entire trajectory of your current path in motion. You embraced the unknown with an open heart, and that act of courage, however naive it may have seemed, planted the seeds of where you find yourself now.",
+        "present": "You are standing at the very beginning of a new chapter. Life is inviting you to take a leap of faith, even if the destination isn't clear. Trust the journey itself, release your need for guarantees, and move forward with curiosity and an open spirit. The world is full of possibility right now.",
+        "future": "An unexpected opportunity is approaching — one that may seem unconventional or uncertain on the surface. It will ask you to summon your courage and trust your instincts over your logic. Those who embrace this invitation with an open heart will find that the path reveals itself step by step."
+      },
+      "reversed": {
+        "overall": "Recklessness, fear of change, naivety, and poor judgment. The Fool reversed warns that you may be rushing headlong into situations without thinking things through, or conversely, that fear and self-doubt are preventing you from taking a necessary risk. Either extreme leads to missed opportunities or avoidable mistakes.",
+        "past": "A careless decision made without adequate forethought — or an opportunity you were too afraid to pursue — continues to cast a shadow on your present circumstances. This pattern of impulsiveness or avoidance is something worth examining honestly.",
+        "present": "Hesitation born from fear, or recklessness born from impatience, threatens to undermine your current situation. Take a step back to discern whether you are acting from wisdom or reacting from anxiety. Naivety or willful ignorance may be leading you astray.",
+        "future": "A significant opportunity may be squandered if fear, impulsiveness, or foolish pride continues to dominate your decision-making. Cultivating awareness and honest self-reflection now will determine whether you seize or miss what's coming."
+      }
+    },
+    {
+      "id": 1,
+      "title": "The Magician",
+      "filename": "01-TheMagician.png",
+      "upright": {
+        "overall": "Manifestation, resourcefulness, willpower, and inspired action. The Magician stands before the tools of all four elements — a reminder that everything you need to create your desired reality is already within your reach. This is a card of conscious creation, skill, and the transformative power of focused intention.",
+        "past": "You demonstrated remarkable skill and determination in channeling your abilities toward a specific goal. Your capacity to draw upon your resources and direct your will produced real, tangible results that continue to shape your life today.",
+        "present": "You are at a moment of extraordinary creative power. The skills, tools, and relationships you have cultivated are ready to be alighted into something meaningful. Act with intention and confidence — your ability to bring visions into reality is at its peak. Don't wait for permission or perfect conditions.",
+        "future": "A convergence of your talents, resources, and opportunities is on the horizon. When it arrives, decisive and focused action will be the key. Your ability to synthesize what you know and what you have will produce results that once seemed out of reach."
+      },
+      "reversed": {
+        "overall": "Manipulation, poor planning, untapped potential, and misuse of power. The Magician reversed signals that gifts are going to waste, energy is being misdirected, or worse — that someone in your life (or you yourself) is using cleverness and persuasion to deceive rather than create.",
+        "past": "There may have been a time when you relied on half-truths, shortcuts, or manipulation to achieve your aims — or when you simply failed to apply your considerable talents and let potential go unrealized. Either way, the consequences of that period are still echoing.",
+        "present": "Your abilities are not being used to their fullest, or they are being directed toward the wrong ends. Consider whether you are being fully honest with yourself and others, and whether your energy is focused on what truly matters to you.",
+        "future": "Be wary of trickery — whether coming from others or from your own self-deception. Talents left unused will atrophy, and plans built on illusions will eventually crumble. Course-correct now before wasted potential becomes a defining regret."
+      }
+    },
+    {
+      "id": 2,
+      "title": "The High Priestess",
+      "filename": "02-TheHighPriestess.png",
+      "upright": {
+        "overall": "Intuition, sacred knowledge, the divine feminine, and the deep wisdom of the subconscious. The High Priestess sits between two pillars, guardian of the veil between the seen and unseen worlds. She does not speak — she listens. This card calls you inward, to trust what you feel and sense beyond what you can logically explain.",
+        "past": "During a pivotal period, your inner voice and intuitive instincts served as your most reliable compass. Even when the path wasn't rationally clear, you trusted your deeper knowing — and it led you somewhere meaningful.",
+        "present": "The answers you are seeking cannot be found through analysis alone. Sit with the stillness. Your subconscious is communicating through dreams, subtle feelings, and quiet impressions — pay close attention to these. Something important is being revealed to those who listen deeply.",
+        "future": "Hidden knowledge, a secret, or a layer of truth that has not yet surfaced will be unveiled through deep introspection and patient observation. The more you cultivate your inner life, the clearer the revelation will be when it arrives."
+      },
+      "reversed": {
+        "overall": "Suppressed intuition, hidden agendas, disconnection from inner wisdom, and secrets being withheld. The High Priestess reversed suggests that the pipeline between your conscious mind and your deeper knowing has been disrupted — by noise, denial, or deliberate avoidance.",
+        "past": "You may have overridden your gut instincts in favor of logic, social pressure, or convenience — or you were keeping a secret that weighed on your spirit. The cost of that disconnection is part of what you carry today.",
+        "present": "Something is being hidden — from you, or by you. Your inner voice is muffled, either by distraction or by an unwillingness to face what it's trying to say. The truth you're avoiding is the very thing you need most to hear right now.",
+        "future": "If intuition remains blocked and secrets continue to fester, confusion and mistrust will compound. The path forward requires a willingness to be radically honest with yourself, even when that honesty is uncomfortable."
+      }
+    },
+    {
+      "id": 3,
+      "title": "The Empress",
+      "filename": "03-TheEmpress.png",
+      "upright": {
+        "overall": "Femininity, sensuality, nature, creative abundance, and nurturing power. The Empress is the archetype of fertile generativity — she embodies the earth's ability to bring forth life, beauty, and sustenance. This card speaks to creativity in all its forms: artistic, relational, entrepreneurial, and biological. It invites you to connect with pleasure, growth, and the natural world.",
+        "past": "A season of abundance, creativity, and nurturing love surrounded you. Whether through relationships, creative work, or personal growth, something in your life was flowering beautifully — and its roots have continued to nourish you since.",
+        "present": "You are being called to invest in the things that bring you genuine pleasure and creative fulfillment. Nurture your relationships, your creative projects, and your own body and spirit. Don't rush the process — nature grows on its own timeline, and so do your most meaningful endeavors.",
+        "future": "A period of significant growth and prosperity is approaching. The seeds of effort and care you are planting now will bear real fruit. Expect abundance, creative breakthroughs, and the blossoming of relationships or projects that have been quietly taking root."
+      },
+      "reversed": {
+        "overall": "Creative blockage, over-dependence, neglect of self, and a sense of inner emptiness. The Empress reversed signals a disconnection from the natural rhythms of growth — either through smothering others, neglecting your own needs, or suppressing your creative vitality.",
+        "past": "There was a period in which you poured so much into others that you depleted yourself, or you experienced a creative drought that left you feeling hollow and stuck. Self-neglect or stagnation may have held back your fullest expression.",
+        "present": "You may be experiencing a creative block, struggling with codependency, or neglecting your physical and emotional self-care. Reconnect with your body, your creative impulses, and your own needs without guilt. You cannot sustain others if your own well has run dry.",
+        "future": "Without a deliberate return to self-nurturing and creative expression, growth will continue to stall. Tend to your inner garden with as much care as you give to the world around you — that is where lasting abundance begins."
+      }
+    },
+    {
+      "id": 4,
+      "title": "The Emperor",
+      "filename": "04-TheEmperor.png",
+      "upright": {
+        "overall": "Authority, structure, discipline, leadership, and the establishment of order from chaos. The Emperor represents the archetype of the wise ruler — one who builds lasting systems and leads with both strength and measured reason. This card calls you to take command of your circumstances, establish clear boundaries, and lead with intention.",
+        "past": "You stepped up and took control of a situation that needed direction and order. Through discipline and decisive leadership, you established a foundation that has continued to support your life in important ways.",
+        "present": "This is a moment to lead. Create structure where there is confusion, establish firm and healthy boundaries, and make decisions from a place of logic and long-term vision rather than emotion or impulse. Your authority, exercised wisely, is both needed and effective right now.",
+        "future": "A role of greater responsibility, leadership, or institutional authority is approaching. Whether in your career, family, or community, you will be called to step into a position of power — one that demands both strength and ethical grounding."
+      },
+      "reversed": {
+        "overall": "Domination, inflexibility, excessive control, and a breakdown of structure. The Emperor reversed suggests that power is being wielded without wisdom — either through authoritarianism and rigidity, or through a total collapse of discipline that leaves life feeling chaotic and ungoverned.",
+        "past": "A period of excessive control — of yourself or others — or a failure to establish necessary structure left lasting damage. You may have been tyrannical without realizing it, or you may have abdicated responsibility when it was most needed.",
+        "present": "Examine whether you are being too rigid and domineering, or whether a lack of discipline is causing disarray in important areas of your life. True authority comes from inner mastery, not from forcing compliance in others.",
+        "future": "Continued rigidity or structural chaos will erode your ability to lead effectively. Cultivating flexible strength — firm where it matters, adaptive where needed — is essential to maintaining your authority and achieving your long-term goals."
+      }
+    },
+    {
+      "id": 5,
+      "title": "The Hierophant",
+      "filename": "05-TheHierophant.png",
+      "upright": {
+        "overall": "Spiritual wisdom, tradition, institutions, mentorship, and the transmission of sacred knowledge. The Hierophant serves as a bridge between the divine and the earthly — a teacher, priest, or elder who passes down the accumulated wisdom of generations. This card honors the value of established knowledge, community ritual, and learning from those who have walked the path before you.",
+        "past": "At a key moment in your development, you sought guidance from a mentor, teacher, spiritual tradition, or institution — and that guidance shaped the values and structures that continue to guide you today.",
+        "present": "Honor the wisdom of tradition without surrendering your own discernment. There is great value to be found in established teachings, mentors, and structured learning right now. Open yourself to guidance from those with experience, and consider what sacred or communal practices might ground and sustain you.",
+        "future": "A guide, teacher, or mentor of spiritual or philosophical depth will appear on your path. Their presence will offer both wisdom and the structure needed to help you grow in meaningful and lasting ways."
+      },
+      "reversed": {
+        "overall": "Challenging orthodoxy, personal belief systems, spiritual rebellion, and the forging of an independent path. The Hierophant reversed invites you to question inherited beliefs and institutional authority — to distinguish between wisdom that truly serves you and dogma that simply constrains you.",
+        "past": "You rejected a traditional path or institutional expectation and charted your own course — sometimes at significant personal cost. Whether that break was liberating or painful, it was a defining moment in the formation of your independent identity.",
+        "present": "You are in a period of questioning received wisdom and established norms. This is healthy and necessary if approached with discernment. Not all tradition is worth preserving, and your willingness to question is a sign of spiritual maturity — as long as it comes from seeking truth, not just from rebellion.",
+        "future": "Your journey will increasingly be defined by the beliefs and values you have chosen for yourself, rather than those handed to you. This independence, if grounded in authentic inquiry, will become one of your greatest sources of strength."
+      }
+    },
+    {
+      "id": 6,
+      "title": "The Lovers",
+      "filename": "06-TheLovers.png",
+      "upright": {
+        "overall": "Love, harmony, deep connection, value alignment, and the power of meaningful choices. The Lovers is not only a card of romantic partnership — it speaks to the crossroads of any significant choice, especially those that require you to align your actions with your truest values. At its heart, it asks: what do you love, and are you honoring it?",
+        "past": "A significant relationship or a choice made from the heart fundamentally shaped the direction of your life. Whether this was a romantic partnership, a deep friendship, or a values-defining decision, it opened a path that continues to unfold.",
+        "present": "A meaningful decision — possibly involving a relationship, a commitment, or a values conflict — stands before you. Don't make this choice with your head alone. Let your heart speak. This is a moment to be honest about what you truly want, and to choose what aligns with your deepest self.",
+        "future": "A significant partnership or pivotal decision is approaching, one that carries real weight and consequence. Approach it with clarity, honesty, and an open heart. The choices you make at this crossroads will ripple outward into many areas of your life."
+      },
+      "reversed": {
+        "overall": "Disharmony, misaligned values, relationship difficulties, and the need for self-love. The Lovers reversed suggests that connections — whether with others or with your own values — are out of alignment. Choices may have been made from fear, obligation, or external pressure rather than genuine love and truth.",
+        "past": "A relationship ended poorly, or a choice made against your deeper values created an internal rift that still lingers. The dissonance between what you chose and what you truly wanted left a mark worth examining.",
+        "present": "You may be experiencing tension or disconnection in a significant relationship, or you may be at odds with your own values. Before you can find harmony with others, look inward — do your choices truly reflect who you are and what you believe?",
+        "future": "Continued misalignment — between your actions and your values, or between you and a partner — will deepen the divide. Honest communication and self-awareness are your most powerful tools right now for preventing further separation."
+      }
+    },
+    {
+      "id": 7,
+      "title": "The Chariot",
+      "filename": "07-TheChariot.png",
+      "upright": {
+        "overall": "Victory, willpower, focused determination, and mastery over opposing forces. The Chariot speaks to the kind of triumph that comes not from luck, but from harnessing your inner contradictions and channeling them toward a single point of focused intention. This is a card of hard-won success achieved through discipline, confidence, and relentless forward motion.",
+        "past": "You pushed through significant obstacles with sheer determination and an unyielding will. Where others might have faltered, you pressed on — and that drive brought you to a victory or milestone that continues to define your strength.",
+        "present": "Take command of the situation before you. You have the will and the ability — what is needed now is direction and follow-through. Don't allow internal conflict or external noise to scatter your focus. Harness every part of yourself toward your goal and charge forward with conviction.",
+        "future": "Success is within reach, but it requires sustained focus and an iron will. When the path gets difficult — and it will — the ability to keep competing forces in check and stay the course will make all the difference. Victory belongs to those who refuse to veer off course."
+      },
+      "reversed": {
+        "overall": "Loss of control, aggression, scattered energy, and lack of direction. The Chariot reversed warns that willpower has turned to force, or that inner conflict has made forward motion impossible. Without a clear direction, all the energy in the world becomes noise rather than momentum.",
+        "past": "You lost your footing — either by pushing too hard in the wrong direction, or by allowing internal conflict to stall your progress entirely. The momentum you needed was squandered or misdirected during a critical period.",
+        "present": "Something is pulling you in competing directions and you're struggling to establish control. Identify where your energy is being siphoned away — by unfocused ambition, unresolved conflict, or aggression masquerading as strength — and recalibrate.",
+        "future": "Without a course correction and a renewed sense of purposeful direction, you risk losing momentum entirely. The key is not more force — it's more clarity. Know where you're going before you push harder."
+      }
+    },
+    {
+      "id": 8,
+      "title": "Strength",
+      "filename": "08-Strength.png",
+      "upright": {
+        "overall": "Inner strength, compassionate courage, patience, and mastery of the instinctual self. The Strength card does not depict brute force — it shows a figure taming a lion with gentle, steady hands. True strength, it teaches, is found in the ability to meet your most primal fears and impulses with calm, loving courage rather than suppression or aggression.",
+        "past": "You faced a situation that required immense personal courage — not the kind that shouts, but the kind that remains steady in the face of fear. Your compassion and resilience in that moment demonstrated a depth of character that continues to sustain you.",
+        "present": "You are being called to face a challenge not with force or willpower alone, but with patience, self-compassion, and quiet inner resolve. The obstacles you're encountering — whether external or within yourself — can be navigated through gentleness and persistent, loving courage.",
+        "future": "Your inner reserves of strength — deeper and more enduring than you may realize — will be the decisive factor in overcoming what lies ahead. Trust in your ability to remain grounded and compassionate under pressure; that is where your true power lives."
+      },
+      "reversed": {
+        "overall": "Self-doubt, emotional volatility, depletion, and a temporary loss of inner authority. Strength reversed suggests that confidence has eroded, raw emotions are running the show, or that you have been pouring so much outward that nothing is left within. It is a call to tend to your inner life before it unravels completely.",
+        "past": "A period of self-doubt or emotional overwhelm left you feeling powerless and depleted. Perhaps your instincts overrode your reason, or fear made you doubt capacities you genuinely possess.",
+        "present": "You are struggling to access your own inner authority right now. The self-doubt you're experiencing may feel insurmountable, but it is not permanent. This is a signal to rest, reconnect with what sustains you, and resist the urge to lead with reactive emotion.",
+        "future": "If self-doubt and emotional volatility are not addressed, they will continue to undermine your progress and relationships. Gentle, consistent self-work — not dramatic effort — is what will restore your sense of inner strength and capability."
+      }
+    },
+    {
+      "id": 9,
+      "title": "The Hermit",
+      "filename": "09-TheHermit.png",
+      "upright": {
+        "overall": "Solitude, inner guidance, deep introspection, and the wisdom found in withdrawal. The Hermit carries a lantern through the dark — not to light the whole path at once, but to illuminate just the next step. This card honors the wisdom that can only be found in stillness and deliberate solitude, away from the noise of the world.",
+        "past": "A meaningful period of withdrawal and introspection — whether chosen or forced — led to profound insights that reshaped your understanding of yourself and your path. The quiet you sought, or found, became a teacher.",
+        "present": "You need to step back from the noise of daily life and seek answers within yourself. External advice and busyness will not give you what you need right now. Create space for silence, contemplation, and honest self-examination. The answers you're looking for are inside, waiting to be heard.",
+        "future": "A season of intentional solitude will bring the clarity and wisdom you have been seeking. When you emerge from that inner work, you will carry a light that not only guides your own way — it may illuminate the path for others as well."
+      },
+      "reversed": {
+        "overall": "Excessive isolation, spiritual withdrawal, disconnection from community, and a failure to apply hard-won wisdom. The Hermit reversed warns that solitude has curdled into loneliness, or that a necessary period of inner work is being avoided through constant distraction and busyness.",
+        "past": "You retreated from the world further than was healthy, or you avoided the inner work entirely by filling your life with noise. Either way, the connection — both to others and to your deeper self — suffered.",
+        "present": "You may be isolating yourself out of fear or despair rather than a genuine need for reflection. Alternatively, you may be avoiding solitude altogether, drowning out your inner voice with external stimulation. Both are forms of avoidance that ultimately deepen the disconnection.",
+        "future": "Continued isolation or continued avoidance of introspection will lead to a deeper sense of being lost and alone. Finding the healthy balance between inner reflection and outward connection is the work that will make the difference."
+      }
+    },
+    {
+      "id": 10,
+      "title": "Wheel of Fortune",
+      "filename": "10-Wheel_of_Fortune.png",
+      "upright": {
+        "overall": "Destiny, karmic cycles, turning points, and the ever-turning wheel of fate. The Wheel of Fortune reminds us that life moves in cycles — seasons of expansion and contraction, luck and hardship, rising and falling. What goes up must come down, and what has fallen will rise again. This card invites trust in the larger rhythm of life, even when the current moment feels uncertain.",
+        "past": "A stroke of good fortune, a karmic twist of fate, or a significant turning point arrived unexpectedly and redirected your entire trajectory. Whether it felt like luck or inevitability, something larger than you was at work.",
+        "present": "The wheel is turning. Forces larger than your individual will are in motion, and the circumstances of your life are shifting whether you feel ready or not. Rather than resisting, lean into the change. What appears to be chaos may be the universe rearranging things in your favor.",
+        "future": "A major turning point is on the horizon — one that could bring sudden improvement, unexpected opportunity, or a shift in circumstances you didn't anticipate. Remain adaptable, and trust that the cycle is moving you toward what you need, even if the path doesn't look the way you expected."
+      },
+      "reversed": {
+        "overall": "Resisting inevitable change, bad luck, breaking repetitive cycles, and clinging to the familiar out of fear. The Wheel of Fortune reversed suggests that either circumstances are turning against you temporarily, or that you are fighting the natural movement of life — insisting on controlling what cannot be controlled.",
+        "past": "You experienced a downturn or a run of bad luck during a difficult cycle, or you resisted a necessary change so forcefully that the resistance itself caused further difficulty.",
+        "present": "You may be in a period where external forces feel stacked against you, or you are stubbornly resisting a change that the universe keeps pushing toward you. Ask yourself what you are clinging to, and why. Sometimes the most powerful thing you can do is release your grip.",
+        "future": "What you resist persists. Fighting the wheel's turn will extend a difficult cycle unnecessarily. Identifying and releasing the patterns, habits, or beliefs that are keeping you stuck is the most direct path to allowing the wheel to move again in your favor."
+      }
+    },
+    {
+      "id": 11,
+      "title": "Justice",
+      "filename": "11-Justice.png",
+      "upright": {
+        "overall": "Truth, fairness, cause and effect, accountability, and the impartial application of law. Justice holds both a sword and a scale — she cuts through confusion to reveal truth, and she measures with unflinching impartiality. This card reminds you that every action carries consequence, and that fair outcomes — whether or not they look the way you hoped — are in motion.",
+        "past": "A fair outcome — a consequence of past decisions, whether rewarding or sobering — shaped your present circumstances. The universe was tallying the ledger, and what you received reflected what had been sown.",
+        "present": "A situation involving fairness, truth, or legal or ethical matters is asking for your clear-eyed attention. Act with integrity in all things. Be willing to face the full truth of a situation, even when it's uncomfortable, because honesty is the only currency that matters right now.",
+        "future": "Justice will be served — not necessarily as you imagine it, but with absolute fairness. The consequences of past actions are catching up, and the truth that has been obscured will be brought into the light. If you have acted with integrity, this is reassuring; if not, it is a call to course-correct now."
+      },
+      "reversed": {
+        "overall": "Injustice, dishonesty, avoiding accountability, and the painful experience of unfair treatment. Justice reversed suggests that the scales are tipped — by corruption, deception, or a willful avoidance of responsibility. Someone is not playing fairly, or consequences are being delayed by dishonesty.",
+        "past": "Either you escaped accountability for something that deserved a reckoning, or you were on the receiving end of a deeply unfair outcome that left you wounded and disillusioned. Both experiences leave their marks on how you navigate trust and fairness today.",
+        "present": "Dishonesty — yours or someone else's — is distorting the situation. You may be rationalizing behavior that doesn't align with your stated values, or you may be experiencing a situation that is simply unjust. Either way, clarity requires brutal honesty with yourself first.",
+        "future": "Dishonesty and unaddressed accountability will compound into more serious consequences. The truth has a way of surfacing eventually — and the longer it is suppressed, the more damaging the revelation tends to be."
+      }
+    },
+    {
+      "id": 12,
+      "title": "The Hanged Man",
+      "filename": "12-TheHangedMan.png",
+      "upright": {
+        "overall": "Surrender, suspension, willing sacrifice, and the profound wisdom that comes from seeing the world upside down. The Hanged Man is not a victim — he chose his position. By releasing control and willingly entering a state of pause, he gains access to a perspective that ordinary action could never provide. This card calls you to stop, release, and let things be.",
+        "past": "A period of enforced stillness, sacrifice, or suspension gave you access to insights that never would have come through ordinary effort. By surrendering what you thought you needed, you gained something far more valuable.",
+        "present": "The situation you're in cannot be resolved through more pushing or forcing. The most powerful move available to you right now is to stop, release your grip on outcomes, and allow a completely different perspective to emerge. What looks like a loss from one angle may be a gift from another.",
+        "future": "Surrendering control of a situation you've been trying to manage will open a door to unexpected wisdom, healing, or growth. The pause you resist is the very thing that will bring the breakthrough you've been looking for."
+      },
+      "reversed": {
+        "overall": "Stalling, resistance to necessary sacrifice, indecision, and the frustration of avoidable delays. The Hanged Man reversed indicates that a meaningful pause has become unproductive stagnation — that the lessons available in the suspension are being missed because of resistance or impatience.",
+        "past": "You were caught in a limbo of your own making — unable to move forward, unwilling to let go — and the delay cost you time, energy, or opportunity that you could not afford to lose.",
+        "present": "You are resisting a necessary sacrifice or postponing a decision that has already been made at some deeper level. The limbo you're experiencing is not fate — it is avoidance. What are you unwilling to release? That is likely the very thing you need to let go of.",
+        "future": "Continued resistance to necessary change will extend your stagnation indefinitely. The longer you delay the surrender that is being asked of you, the more costly and painful the eventual transition will be."
+      }
+    },
+    {
+      "id": 13,
+      "title": "Death",
+      "filename": "13-Death.png",
+      "upright": {
+        "overall": "Endings, profound transformation, transition, and the promise of rebirth. Rarely does the Death card indicate physical death — far more often, it signals the death of an era, a relationship, an identity, or a way of life that has run its full course. What is dying needs to die so that something new and more authentic can emerge. This is the most transformative card in the deck.",
+        "past": "A significant ending or transformation shook the foundations of your life. Something that once defined you — a relationship, a role, a belief — came to a close, and that ending, however painful, created the space in which your current self was born.",
+        "present": "Something in your life has run its course and is asking to be released. Holding on will not bring it back — it will only prolong a painful process. Embrace the ending with as much grace and courage as you can. Trust that this clearing is making room for something you cannot yet see.",
+        "future": "A major transformation is imminent. It may feel like loss, but it is ultimately renewal. The structures, relationships, or aspects of yourself that fall away in this transition are not being taken from you — they are being composted into the fertile ground of what comes next."
+      },
+      "reversed": {
+        "overall": "Resistance to necessary endings, stagnation, clinging to the past, and a fear of transformation so strong that it keeps you frozen in a life that no longer fits. The Death card reversed does not mean you escape transformation — only that you are delaying it, at great personal cost.",
+        "past": "You clung to something long past its natural end — a relationship, a career, a belief — out of fear, comfort, or an inability to imagine something different. That resistance created stagnation that is still playing out.",
+        "present": "You are gripping tightly to something that is already over. The more you insist on resurrecting what has died, the more energy you spend in resistance and grief rather than in growth and renewal. What are you afraid will be lost if you truly let go?",
+        "future": "Avoiding the necessary death of what no longer serves you will not prevent its eventual end — it will only ensure that the ending comes with more suffering and less of your choosing. Transformation is not optional; how you move through it is."
+      }
+    },
+    {
+      "id": 14,
+      "title": "Temperance",
+      "filename": "14-Temperance.png",
+      "upright": {
+        "overall": "Balance, moderation, divine timing, integration, and the patient alchemy of combining opposites into something greater than the sum of their parts. Temperance depicts an angelic figure carefully pouring water between two cups — a reminder that mastery often lies not in extremes, but in the measured, steady blending of forces. This is a card of long-term vision over short-term gratification.",
+        "past": "You navigated a complex situation with remarkable patience and balance. By refusing to be pulled to either extreme, you found a middle path that held the best of both possibilities and allowed you to move forward with greater wisdom.",
+        "present": "Resist the pull toward excess or impatience. The situation you're in requires a calm, measured hand and a willingness to integrate opposing needs, perspectives, or impulses. Trust that slow and steady is not the same as being stuck — it is how lasting solutions are built.",
+        "future": "Harmony and resolution are on their way — not through a dramatic breakthrough, but through the patient, consistent application of balance and moderation. The alchemy of your efforts will produce something lasting and genuinely satisfying."
+      },
+      "reversed": {
+        "overall": "Imbalance, excess, self-healing in progress, and a need for re-alignment. Temperance reversed signals that something in your life has swung too far in one direction — too much or too little of something essential. The invitation is not self-judgment, but honest re-calibration.",
+        "past": "A period of excess, extreme behavior, or loss of equilibrium left lasting consequences. You may have indulged in one area of life while starving another, or oscillated between extremes without finding the grounding middle.",
+        "present": "Look honestly at where your life has fallen out of balance. Something — perhaps work, relationships, health, or emotional regulation — is operating at an extreme that is costing you more than you realize. Small, consistent adjustments will do more than dramatic overhauls.",
+        "future": "Without a conscious return to balance and moderation, the patterns of excess or neglect currently in motion will deepen. Begin making small corrections now — they compound over time into profound healing and lasting equilibrium."
+      }
+    },
+    {
+      "id": 15,
+      "title": "The Devil",
+      "filename": "15-TheDevil.png",
+      "upright": {
+        "overall": "Shadow self, bondage, addiction, materialism, and the seductive pull of unhealthy attachments. The Devil card depicts two figures in chains — but look closely, the chains are loose. They are not prisoners; they are participants. This card shines a light on the ways we willingly bind ourselves to people, patterns, substances, or beliefs that diminish us, because somewhere in the darkness, they feel safe or satisfying.",
+        "past": "You were entangled in an unhealthy dependency — whether to a person, a substance, a way of thinking, or a material comfort — that limited your freedom and clouded your perception of what was truly possible for you.",
+        "present": "Something in your life is holding you captive — and it's worth asking honestly what payoff you are receiving for staying. Addictive patterns, toxic relationships, materialistic obsessions, and limiting beliefs all live here. This is a call to examine what you are chained to, and to recognize that the chains are looser than they appear.",
+        "future": "Continued participation in unhealthy patterns will tighten the bonds over time. But the chains are never locked — awareness is the first key. Take an unflinching look at where you are giving your power away, and begin the work of reclaiming it."
+      },
+      "reversed": {
+        "overall": "Breaking free, releasing limiting beliefs, exploring the shadow with courage, and beginning the process of detachment from what has held you captive. The Devil reversed marks the beginning of liberation — the recognition that the chains can be removed and the first tentative steps toward freedom.",
+        "past": "You began loosening the grip of an addiction, toxic relationship, or limiting belief system. Whether that break was complete or partial, the first movement toward freedom was significant and it changed the course of your inner life.",
+        "present": "You are in the process of confronting your shadow self and beginning to disentangle from dependencies or restrictive patterns. This is brave and essential work — though it often feels uncomfortable before it feels freeing. Stay with it.",
+        "future": "Freedom from what has bound you is genuinely achievable if you persist in the work. The more you understand the nature of your own shadows and the ways you participate in your own bondage, the more power you reclaim to live on your own terms."
+      }
+    },
+    {
+      "id": 16,
+      "title": "The Tower",
+      "filename": "16-TheTower.png",
+      "upright": {
+        "overall": "Sudden upheaval, revelation, the collapse of false structures, and the chaotic but necessary clearing that follows. The Tower is one of the most feared cards in the deck — but its destruction is not random. It strikes at what has been built on unstable foundations, on illusions, ego, or falsehood. What it tears down needed to come down; the lightning is revelation, not punishment.",
+        "past": "A sudden, destabilizing event — a revelation, a loss, a crisis — shattered a foundation you had been standing on. The destruction was disorienting and painful, but it cleared ground that had been occupied by something that was never as solid as it appeared.",
+        "present": "Something in your life is either actively crumbling or about to fall. Brace for upheaval, but try not to fight what is being dismantled. False structures — relationships built on illusions, careers built on wrong foundations, identities built on others' expectations — cannot stand indefinitely. The falling away, however painful, is making room for something true.",
+        "future": "A revelation or sudden disruption will shake the structures of your life in ways you did not anticipate. While the initial experience will feel chaotic, the clearing it creates will ultimately allow for something far more authentic and enduring to be built in its place."
+      },
+      "reversed": {
+        "overall": "Avoiding disaster, internal upheaval, delayed reckoning, and the slow burn of changes that are inevitable but being resisted. The Tower reversed suggests the lightning is still coming — but the collapse is happening internally, or is being consciously or unconsciously averted through extreme effort.",
+        "past": "You narrowly escaped a crisis through foresight or luck, or you experienced an internal collapse — a crisis of belief, identity, or values — that was invisible to the outside world but deeply destabilizing from within.",
+        "present": "You may be sensing that something in your life is structurally unsound but are choosing not to look at it directly. The work happening now is internal — a dismantling of false beliefs, ego constructs, or outdated identities that must fall before new ground can be built.",
+        "future": "Delays in confronting what needs to change will not prevent the Tower's eventual fall — they will only diminish your agency in how and when it happens. Choosing to dismantle what doesn't serve you on your own terms is always less painful than having it collapse around you."
+      }
+    },
+    {
+      "id": 17,
+      "title": "The Star",
+      "filename": "17-TheStar.png",
+      "upright": {
+        "overall": "Hope, healing, renewal, spiritual inspiration, and the quiet radiance of faith restored. The Star appears after the Tower's destruction — a gentle, luminous presence that says: there is still beauty, still grace, still possibility. This is a card of profound healing and of reconnection with the guiding light of purpose, even after great difficulty.",
+        "past": "After a period of hardship or upheaval, you found a thread of hope and held onto it. That quiet renewal of faith and purpose — perhaps fragile at first — gave you the direction and inner resources you needed to begin again.",
+        "present": "Let yourself be healed. The Star offers gentle, restorative energy — a reminder that you are loved by something larger than your circumstances, and that your wishes and dreams are not foolish. Open yourself to the possibility of renewal. Rest. Receive. Trust the process of healing.",
+        "future": "A period of genuine hope, restoration, and spiritual reconnection is approaching. Your wishes are being heard, and the universe is quietly arranging the conditions for healing and fulfillment. Trust in what you cannot yet see."
+      },
+      "reversed": {
+        "overall": "Despair, loss of faith, disconnection from purpose, and a temporary inability to see the light at the end of the tunnel. The Star reversed speaks to a deep spiritual or emotional drought — a state in which hope feels not just elusive but naive.",
+        "past": "A period of profound disappointment or disillusionment cut you off from hope. You may have stopped trusting in the possibility of things getting better, or you withdrew from the spiritual practices and connections that once sustained you.",
+        "present": "You are struggling to access hope or faith right now. This is valid — and it is not permanent. But it's worth examining whether despair has become a habit or identity, and what small, specific act of trust you might be willing to take today.",
+        "future": "Without intentional work to restore faith and reconnect with purpose, despair can deepen into a self-fulfilling prophecy. Even a small gesture of hope — a single act of trust in yourself or in life — can begin to shift the energy that has grown dark."
+      }
+    },
+    {
+      "id": 18,
+      "title": "The Moon",
+      "filename": "18-TheMoon.png",
+      "upright": {
+        "overall": "Illusion, subconscious fears, mystery, anxiety, and the disorienting experience of navigating by limited and shifting light. The Moon rules the realm of dreams, shadow, and the deep subconscious. Under its light, things appear other than they are — truth and illusion blend into each other. This card does not ask you to banish the dark; it asks you to move through it with awareness and trust in your intuition.",
+        "past": "A period of confusion, anxiety, or subconscious turbulence clouded your perception of reality. You may have been misled — by others or by your own fears — and navigated by illusion rather than truth during a critical time.",
+        "present": "Not everything is as it appears right now. Intuition and discernment are your greatest allies. Check facts before assuming; examine your fears before acting on them; pay close attention to your dreams and the subtle messages your deeper mind is sending. The clarity you're seeking exists — but it cannot be forced.",
+        "future": "The fog will lift, but only gradually and only for those willing to move through it with patience and trust. Mysteries currently in motion will unfold in their own time. Your subconscious mind is working on your behalf — pay attention to what arises in the liminal spaces."
+      },
+      "reversed": {
+        "overall": "Releasing fear, confronting illusions, clearing confusion, and the beginning of psychological integration. The Moon reversed suggests that what was hidden is beginning to surface, or that you are finding your way out of a long stretch of confusion and anxiety into greater clarity.",
+        "past": "You began the process of confronting illusions you had been living under — perhaps releasing fears, facing repressed emotions, or clearing up a misunderstanding that had distorted your reality for too long.",
+        "present": "Clarity is breaking through. Repressed emotions, old fears, and confusing illusions are ready to be brought into the light of conscious awareness. This process may be uncomfortable, but it is the necessary work of integration — of making the unconscious conscious.",
+        "future": "As the Moon's fog continues to thin, you will begin to see yourself and your circumstances with increasing accuracy and compassion. The fears and illusions that once held power over you will lose their grip as they are met with honest awareness."
+      }
+    },
+    {
+      "id": 19,
+      "title": "The Sun",
+      "filename": "19-TheSun.png",
+      "upright": {
+        "overall": "Joy, vitality, success, clarity, and the radiant warmth of life fully embraced. The Sun is the most unambiguously positive card in the Major Arcana — a brilliant light that illuminates everything, dispels shadows, and fills the world with energy and possibility. It speaks to a time of genuine happiness, creative vitality, and the kind of success that comes from being fully and authentically yourself.",
+        "past": "A golden period blessed your life with joy, achievement, and warmth. Whether in love, creative endeavors, or personal growth, you flourished — and the energy and confidence cultivated in that time continue to sustain you.",
+        "present": "Allow yourself to receive what is good right now. Celebrate your wins, bask in the warmth of what is working, and let your natural vitality and enthusiasm lead the way. The Sun illuminates clearly — what you see is what is real. Trust the joy.",
+        "future": "A period of genuine happiness, success, and radiant vitality is approaching. Whether this manifests as professional triumph, relationship fulfillment, or simply a deep inner sense of rightness — the Sun is rising on a beautiful chapter of your life."
+      },
+      "reversed": {
+        "overall": "Temporary sadness, dimmed joy, unrealistic optimism, or disconnection from your inner child. The Sun reversed does not erase the light — it merely indicates that clouds are temporarily passing over it. The positivity and vitality of the Sun are still available to you, but something is preventing their full expression.",
+        "past": "A period of false optimism, naive thinking, or unexpected darkness followed a time of brightness. The light was real — but so was the shadow that followed, and it brought important lessons about realistic hope versus wishful thinking.",
+        "present": "You may be experiencing a temporary emotional dimming, or you may be putting on a performance of positivity that doesn't match your inner state. Authentic expression — even of sadness — is more healing than forced cheerfulness. The Sun will shine again.",
+        "future": "A temporary cloud is passing. Be patient with yourself and resist the urge to perform happiness before you feel it. The genuine joy and vitality of the Sun are cycling back toward you — prepare to receive them honestly and fully."
+      }
+    },
+    {
+      "id": 20,
+      "title": "Judgement",
+      "filename": "20-Judgement.png",
+      "upright": {
+        "overall": "Awakening, absolution, inner calling, and the transformative experience of hearing a summons from the deepest part of yourself. Judgement depicts a moment of spiritual reckoning — not condemnation, but clarion-clear self-evaluation and the call to rise into a higher version of who you are. It is about forgiving the past, honoring where you've been, and answering the call that only you can answer.",
+        "past": "A significant spiritual awakening or moment of reckoning reshaped your understanding of yourself and your purpose. You were called to account for your past — not to be punished, but to be freed from it — and that process set you on a clearer, truer path.",
+        "present": "You are being called — loudly and unmistakably — to rise. This is a moment of profound self-evaluation, forgiveness, and commitment. Reflect honestly on who you have been, release what is complete, and answer the deeper calling that has been sounding beneath the noise of daily life. Don't ignore the trumpet.",
+        "future": "A powerful moment of reckoning, renewal, and awakening is approaching. It will ask you to face yourself with absolute honesty and to make a commitment to living in alignment with your highest purpose. Those who answer the call will experience a profound sense of rebirth and rightness."
+      },
+      "reversed": {
+        "overall": "Self-doubt, an overly harsh inner critic, ignoring your calling, and a deep reluctance to truly look at yourself and take stock. Judgement reversed suggests that the call is sounding — but fear, self-loathing, or willful distraction is preventing you from hearing and answering it.",
+        "past": "You were too critical of yourself to clearly see your own worth, or you ignored a calling that was asking for your attention — perhaps out of fear of what answering it would require you to change or leave behind.",
+        "present": "Your inner critic may be louder than your inner guide right now. The judgement you're rendering on yourself is likely neither fair nor accurate. The reckoning that Judgement calls for is compassionate self-assessment — not self-flagellation. What would it mean to truly forgive yourself?",
+        "future": "Ignoring your calling — the deep, persistent voice of what you are meant to do and be — will lead to accumulating regret. The longer you let self-doubt silence that voice, the harder it becomes to recognize it. Begin listening now, even if the call seems too large or too late."
+      }
+    },
+    {
+      "id": 21,
+      "title": "The World",
+      "filename": "21-TheWorld.png",
+      "upright": {
+        "overall": "Completion, integration, fulfillment, and the triumphant sense of having arrived at the end of a significant cycle. The World is the final card of the Major Arcana — and it signals not just an ending, but a synthesis. Everything that has been learned, lost, gained, and transformed across the journey comes together here in a moment of wholeness. You have earned this. Celebrate it.",
+        "past": "A major chapter of your life came to a beautiful, fulfilling conclusion. You achieved something that required your full commitment and the integration of everything you had experienced — and that sense of completion has become a foundation from which you continue to grow.",
+        "present": "You are approaching the culmination of a significant cycle. Acknowledge how far you have come, what you have overcome, and how much you have grown. Celebrate the integration of all that has brought you to this point — the struggle and the joy alike. This is what completion feels like.",
+        "future": "Success, completion, and a deeply satisfying sense of fulfillment await you at the end of the journey you are currently on. The world — in its fullest sense — is yours. A new cycle will begin from a place of genuine wholeness and hard-won wisdom."
+      },
+      "reversed": {
+        "overall": "Incompletion, shortcuts, deferred closure, and the frustration of being tantalizingly close to the finish line without crossing it. The World reversed suggests that you are nearly there — but something is preventing the final, necessary step toward genuine completion.",
+        "past": "You took shortcuts, left things unresolved, or abandoned a journey before it reached its natural conclusion. The loose ends you left behind have continued to demand your energy in ways that prevent you from moving fully forward.",
+        "present": "You are close to a meaningful completion, but something — fear, impatience, or an unwillingness to do the final difficult work — is keeping you from crossing the threshold. What is the last thing standing between you and genuine closure? That is where your attention belongs.",
+        "future": "Taking shortcuts or refusing to do the final, necessary work will prevent you from experiencing the deep fulfillment that genuine completion brings. The last mile is often the hardest — and the most essential. See it through."
+      }
+    }
+  ]
+}
