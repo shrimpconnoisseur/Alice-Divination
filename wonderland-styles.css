@@ -908,6 +908,9 @@ body::after {
 
 .modal-card-display {
   flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
@@ -1283,6 +1286,7 @@ body.large-ui .signup-dropdown-inner {
 
   .modal-card-display {
     flex: auto;
+    width: 20%;
   }
 
   .controller-bubbles {

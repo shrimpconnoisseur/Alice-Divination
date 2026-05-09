@@ -286,14 +286,19 @@ class CharacterPlacer {
 }
 
 // Card Classification
-// everything else would be considered negative or cautionary
-const POSITIVE_CARD_IDS = new Set([1, 2, 3, 6, 8, 10, 14, 17, 19, 20, 21]);
+const POSITIVE_CARD_IDS = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 19, 20, 21]);
+const REVERSED_POSITIVE_IDS = new Set([15]); // negative upright, positive reversed
 
 function isPositiveReading(drawnCards) {
-  // a reading is "good" if at least 2 of the drawn cards are in the POSITIVE_CARD_IDS set and are upright
-  const positiveCount = drawnCards.filter(
-    (d) => !d.reversed && POSITIVE_CARD_IDS.has(d.card.id)
-  ).length;
+  const positiveCount = drawnCards.filter((d) => {
+    const id = d.card.id;
+    if (d.reversed) {
+      return REVERSED_POSITIVE_IDS.has(id); // positive only when reversed
+    } else {
+      return POSITIVE_CARD_IDS.has(id);     // positive only when upright
+    }
+  }).length;
+
   return positiveCount > drawnCards.length / 2;
 }
 
@@ -336,7 +341,7 @@ class ReadingModeToggle {
   }
 
   toggle() {
-    this.apply(!this.threeCard);
+    this.apply(!this.isThreeCard);
   }
 
   apply(threeCard) {
@@ -770,7 +775,7 @@ class TarotReading {
 
     // card img
     // this is broken
-    const imgEl = document.getElementById('modal-card-img');
+    const imgEl = document.getElementById('modal-card-image');
     if (imgEl) {
       imgEl.src = cardImagePath(card);
       imgEl.alt = card.title;
