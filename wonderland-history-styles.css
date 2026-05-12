@@ -1,0 +1,256 @@
+.deck-subtitle {
+  font-size: 1.4rem;
+  color: var(--silver);
+  opacity: 0.7;
+  margin-bottom: 3rem;
+  letter-spacing: 1px;
+}
+
+/* HISTORY LIST */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+.history-entry {
+  background: rgba(107, 78, 154, 0.15);
+  border: 1px solid rgba(107, 78, 154, 0.4);
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.history-entry:hover {
+  border-color: rgba(244, 208, 63, 0.4);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.history-entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.history-entry-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.history-entry-date {
+  font-family: "AliceFont", cursive;
+  font-size: 1.1rem;
+  color: var(--golden);
+  text-shadow: 0 1px 6px rgba(244, 208, 63, 0.4);
+}
+
+.history-entry-mode {
+  font-family: "AliceFont", cursive;
+  font-size: 0.8rem;
+  color: var(--alice-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+.history-delete-btn {
+  font-family: "AliceFont", cursive;
+  font-size: 0.85rem;
+  background: transparent;
+  border: 1.5px solid rgba(255, 80, 80, 0.4);
+  color: rgba(255, 120, 120, 0.8);
+  border-radius: 8px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.history-delete-btn:hover {
+  background: rgba(255, 60, 60, 0.15);
+  border-color: rgba(255, 80, 80, 0.8);
+  color: #ff8080;
+}
+
+/* CARD STRIP */
+.history-cards {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.history-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.history-card-wrapper {
+  width: 90px;
+  aspect-ratio: 4 / 7;
+  border-radius: 8px;
+  border: 2px solid rgba(244, 208, 63, 0.35);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.history-card:hover .history-card-wrapper {
+  transform: translateY(-4px) scale(1.05);
+  border-color: var(--golden);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(244, 208, 63, 0.4);
+}
+
+.history-card-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.history-card-wrapper img.reversed {
+  transform: rotate(180deg);
+}
+
+.history-card-info {
+  text-align: center;
+}
+
+.history-card-title {
+  font-family: "AliceFont", cursive;
+  font-size: 0.75rem;
+  color: var(--silver);
+  opacity: 0.9;
+}
+
+.history-card-position {
+  font-family: "AliceFont", cursive;
+  font-size: 0.65rem;
+  color: var(--alice-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+.history-card-reversed-tag {
+  font-family: "AliceFont", cursive;
+  font-size: 0.6rem;
+  color: rgba(255, 120, 120, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* EMPTY STATE */
+.history-empty {
+  font-family: "AliceFont", cursive;
+  font-size: 1.3rem;
+  color: var(--silver);
+  opacity: 0.5;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* CONFIRM DIALOG */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 39, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 900;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-overlay.active {
+  display: flex;
+}
+
+.confirm-dialog {
+  background: linear-gradient(135deg, var(--deep-purple), var(--midnight));
+  border: 2px solid rgba(255, 80, 80, 0.5);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 60, 60, 0.2);
+  text-align: center;
+}
+
+.confirm-message {
+  font-family: "AliceFont", cursive;
+  font-size: 1.2rem;
+  color: var(--silver);
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.confirm-btn {
+  font-family: "AliceFont", cursive;
+  font-size: 1rem;
+  padding: 0.65rem 1.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.confirm-btn--danger {
+  background: rgba(255, 60, 60, 0.2);
+  border-color: rgba(255, 80, 80, 0.6);
+  color: #ff8080;
+}
+
+.confirm-btn--danger:hover {
+  background: rgba(255, 60, 60, 0.35);
+  border-color: #ff5050;
+}
+
+.confirm-btn--cancel {
+  background: rgba(107, 78, 154, 0.2);
+  border-color: rgba(107, 78, 154, 0.5);
+  color: var(--silver);
+}
+
+.confirm-btn--cancel:hover {
+  background: rgba(107, 78, 154, 0.35);
+  border-color: var(--mystic-purple);
+}
+
+/* Large UI */
+body.large-ui .history-card-wrapper {
+  width: 120px;
+}
+
+body.large-ui .history-entry-date {
+  font-size: 1.4rem;
+}
+
+body.large-ui .history-card-title {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 640px) {
+  .history-card-wrapper {
+    width: 70px;
+  }
+
+  .history-cards {
+    gap: 0.75rem;
+  }
+}
