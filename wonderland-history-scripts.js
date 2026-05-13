@@ -247,7 +247,7 @@ function renderHistory() {
 // Boot
 async function init() {
   try {
-    const res = await fetch('tarot-cards.json');
+    const res = await fetch('resources/tarot-cards.json');
     const data = await res.json();
     allCards = data.cards;
   } catch (err) {

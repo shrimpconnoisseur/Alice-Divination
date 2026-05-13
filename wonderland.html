@@ -15,10 +15,9 @@
     <title>Wonderland</title>
 		<link rel="icon" type="image/png" href="/resources/alice-icon.png">
     <link rel="stylesheet" href="wonderland-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   </head>
   <body>
-    <!-- ADD A DISCLAIMER HERE! -->
-
     <!-- SETTINGS BUBBLE - top-left -->
      <div class="settings-bubble" id="settings-bubble" title="Settings">
       <span class="settings-bubble-label">Settings</span>
@@ -82,6 +81,55 @@
         <span class="controller-bubble-label" style="padding:20px; text-align:center;">Move Position</span>
       </div>
      </nav>
+
+     <!-- SITE INFORMATION BUBBLES: SUPABASE AND DISCLAIMER -->
+      <nav class="information-bubbles" aria-label="Site information">
+        <div class="information-bubble" id="supabase-bubble" title="Supabase">
+          <span class="information-bubble-label" style="padding:20px; text-align:center;">Supabase</span>
+        </div>
+        <div class="information-bubble" id="disclaimer-bubble" title="Disclaimer">
+          <span class="information-bubble-label" style="padding:20px; text-align:center;">Disclaimer</span>
+        </div>
+      </nav>
+
+      <!-- SITE INFORMATION MODALS -->
+      <div class="supabase-modal" id="supabase-modal">
+            <div class="supabase-modal-content">
+              <span class="close-button" id="supabase-close-modal">&times;</span>
+              <div class="supabase-shoupan-gif" id="supabase-shoupan">
+                <img id="shoupan-gif" src="resources/shoupabase.gif">
+              </div>
+              <div class="supabase-modal-body">
+                <p id="supabase-modal-p">
+                  This website is using Supabase for its backend and database functions. Why not just use Node JS and some other database API? That requires doing something that I don't understand yet! Besides, I've worked with databases before and that's a pain I want to leave in the past!
+                </p>
+                <br>
+                <a id="supabase-modal-a" href="https://supabase.com/">Check them out here!</a>
+              </div>
+            </div>
+          </div>
+      
+      <div class="disclaimer-modal" id="disclaimer-modal">
+        <div class="disclaimer-modal-content">
+          <span class="close-button" id="disclaimer-close-modal">&times;</span>
+          <div class="disclaimer-modal-header">
+            <h2 id="disclaimer-title">Disclaimer</h2>
+          </div>
+          <div class="disclaimer-modal-body">
+            <p id="disclaimer-modal-p">
+              This project is a non-commercial academic work created for educational purposes only. Graphical assets used on this website are not my original assets but are the property of their respective owner(s), including EPID Games, the developers of Trickcal. These assets have been sourced from publically available materials and are used here solely for demonstration and learning purposes. Specifically, they are sourced from Sefhi's website <a href="https://lootandwaifus.com/">Loot & Waifus</a>.
+            </p>
+            <br>
+            <p id="disclaimer-modal-p2">
+              Other assets used include Rider-Waite Smith's Major Arcana deck, utilising a cleaned up and resized version downloaded from luciellaes' <a href="https://luciellaes.itch.io/rider-waite-smith-tarot-cards-cc0">itch.io</a> asset, which they sourced from <a href="https://en.wikipedia.org/wiki/Rider%E2%80%93Waite_Tarot">Wikipedia</a>. According to Wikipedia, these assets are <a href="https://en.wikipedia.org/wiki/Rider%E2%80%93Waite_Tarot#Copyright_status">public domain</a> according to the United States' copyright laws.
+            </p>
+            <p id="disclaimer-modal-p3">
+              No copyright infringement is intended. All rights to the original assets remain with EPID Games and their respective owners. If you are the copyright holder of any content used in this project and would like it to be removed or properly credited, please contact me, and I will remove them.
+            </p>
+            <p id="disclaimer-mailto"><a href="mailto:azm.arami14@gmail.com">Email Me Here</a></p>
+          </div>
+        </div>
+      </div>
 
     <!-- NAVIGATION BUBBLES -->
      <nav class="nav-bubbles" aria-label="Site navigation">

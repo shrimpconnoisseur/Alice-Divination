@@ -76,7 +76,7 @@ document.getElementById('card-modal')?.addEventListener('click', (e) => {
 async function init() {
   let cards = [];
   try {
-    const res = await fetch('tarot-cards-expanded.json');
+    const res = await fetch('resources/tarot-cards-expanded.json');
     const data = await res.json();
     cards = data.cards.slice().sort((a, b) => a.id - b.id);
   } catch (err) {

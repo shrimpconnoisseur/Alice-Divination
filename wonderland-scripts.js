@@ -1,8 +1,5 @@
 'use strict';
 
-// TODO: Implement in both HTML and JS
-// function initDisclaimer() {}
-
 // Character Configs
 const CHARACTERS = {
   alice: {
@@ -539,7 +536,7 @@ class TarotReading {
 
   async _loadCards() {
     try {
-      const res = await fetch('tarot-cards.json');
+      const res = await fetch('resources/tarot-cards.json');
       const data = await res.json();
       this.cards = data.cards;
     } catch (err) {
@@ -774,7 +771,6 @@ class TarotReading {
     if (!modal) return;
 
     // card img
-    // this is broken
     const imgEl = document.getElementById('modal-card-image');
     if (imgEl) {
       imgEl.src = cardImagePath(card);
@@ -832,8 +828,45 @@ class TarotReading {
 }
 
 // Sign-up bubble toggle
-const signupBubble   = document.getElementById('bubble-signup');
+const signupBubble = document.getElementById('bubble-signup');
 const signupDropdown = document.getElementById('signup-dropdown');
+
+// setup signup functionality
+document.querySelector('.signup-submit')?.addEventListener('click', async () => {
+  const username = document.getElementById('signup-username').value.trim();
+  const password = document.getElementById('signup-password').value;
+
+  // generic validation
+  if (!username || !password) {
+    alert('Please fill in both fields.');
+    return;
+  }
+
+  // i'll think about making this include an email
+  // but for now i'll keep it as username-only
+  const wlEmail = `${username}@wonderland.local`;
+
+  const { data, error} = await window._supabase.auth.signUp({
+    email: wlEmail,
+    password: password,
+    options: {
+      data: { username }
+    }
+  });
+
+  if (error) {
+    alert(`Sign-up error: ${error.message}`);
+    return;
+  }
+
+  await window._supabase.from('profiles').insert({
+    id: data.user.id,
+    username,
+  });
+
+  alert('Welcome to Wonderland!');
+  document.getElementById('signup-dropdown').classList.remove('open');
+})
 
 signupBubble?.addEventListener('click', (e) => {
   e.stopPropagation();
@@ -884,6 +917,52 @@ largeUIToggle?.addEventListener('change', () => {
   document.body.classList.toggle('large-ui', enabled);
   localStorage.setItem('wonderland_large_ui', enabled);
 })
+
+// supabase modal
+const supabaseBubble = document.getElementById('supabase-bubble');
+const supabaseModal = document.getElementById('supabase-modal');
+const supabaseCloseBtn = document.getElementById('supabase-close-modal');
+
+function openSupaModal() {
+  supabaseModal.classList.add('active');
+}
+
+function closeSupaModal() {
+  supabaseModal.classList.remove('active');
+}
+
+supabaseBubble?.addEventListener('click', openSupaModal);
+supabaseCloseBtn?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  closeSupaModal();
+});
+supabaseModal?.addEventListener('click', (e) => {
+  if (e.target === supabaseModal) closeSupaModal();
+});
+
+// disclaimer modal
+const disclaimerBubble = document.getElementById('disclaimer-bubble');
+const disclaimerModal = document.getElementById('disclaimer-modal');
+const disclaimerCloseBtn = document.getElementById('disclaimer-close-modal');
+
+function openDisclaimerModal() {
+  disclaimerModal.classList.add('active');
+}
+
+function closeDisclaimerModal() {
+  disclaimerModal.classList.remove('active');
+}
+
+disclaimerBubble?.addEventListener('click', openDisclaimerModal);
+
+disclaimerCloseBtn?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  closeDisclaimerModal();
+});
+
+disclaimerModal?.addEventListener('click', (e) => {
+  if (e.target === disclaimerModal) closeDisclaimerModal();
+});
 
 /* dev mode: no 24hr cooldown */
 /* password is going to be exposed here but honestly i dont care */
@@ -972,8 +1051,32 @@ devPasswordInput?.addEventListener('blur', () => {
   }, 150);
 });
 
+// disclaimer first-visit
+const DISCLAIMER_KEY = 'wonderland_disclaimer_seen';
+
+function showDisclaimerIfFirstVisit() {
+  if (!localStorage.getItem(DISCLAIMER_KEY)) {
+    openDisclaimerModal();
+  }
+}
+
+function dismissDisclaimer() {
+  localStorage.setItem(DISCLAIMER_KEY, 'true');
+  closeDisclaimerModal();
+}
+
+disclaimerCloseBtn?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  dismissDisclaimer(); // changed
+});
+
+disclaimerModal?.addEventListener('click', (e) => {
+  if (e.target === disclaimerModal) dismissDisclaimer(); // changed
+});
+
 // boot
 document.addEventListener('DOMContentLoaded', () => {
   new CharacterPlacer();
   window._tarotReading = new TarotReading(); // exposed
+  showDisclaimerIfFirstVisit();
 });

@@ -1125,6 +1125,271 @@ body::after {
   color: var(--silver);
 }
 
+.information-bubbles {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.6rem;
+  display: flex;
+  gap: 0.75rem;
+  z-index: 500;
+  align-items: flex-start;
+}
+
+.information-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%,
+    rgba(107, 78, 154, 0.85) 0%,
+    rgba(10, 14, 39, 0.92) 100%);
+  border: 2px solid rgba(244, 208, 63, 0.45);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(107, 78, 154, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--silver);
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+  animation: bubbleFloat 4s ease-in-out infinite;
+}
+
+.information-bubble:nth-child(1) { animation-delay: 0s; }
+.information-bubble:nth-child(2) { animation-delay: 0.6s; }
+
+.information-bubble:hover {
+  border-color: var(--golden);
+  box-shadow:
+    0 6px 28px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(244, 208, 63, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation-play-state: paused;
+  transform: translateY(-4px) scale(1.08);
+}
+
+.information-bubble::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 18%;
+  width: 30%;
+  height: 18%;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.information-bubble-label {
+  font-family: "AliceFont", cursive;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--golden);
+  opacity: 0.85;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.supabase-modal {
+  display: none;
+  position:fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 14, 39, 0.95);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease;
+}
+
+.supabase-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.supabase-modal-content {
+  background: linear-gradient(135deg, var(--deep-purple) 0%, var(--midnight) 100%);
+  border: 3px solid var(--golden);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(244, 208, 63, 0.4);
+  animation: slideIn 0.4s ease-out;
+  position: relative;
+}
+
+.supabase-modal-content .close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 3rem;
+  color: var(--golden);
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+.supabase-modal-content .close-button:hover {
+  color: var(--alice-cyan);
+  transform: rotate(90deg);
+}
+
+.supabase-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0;
+  text-align: center;
+}
+
+.supabase-shoupan-gif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#supabase-modal-a {
+  color: var(--alice-cyan);
+  text-decoration: none;
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+#supabase-modal-a:hover {
+  color: var(--golden);
+  text-shadow: 0 0 10px rgba(244, 208, 63, 0.5);
+}
+
+#supabase-modal-p {
+  color: var(--silver);
+  font-size: 2rem;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.disclaimer-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 14, 39, 0.95);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease;
+}
+
+.disclaimer-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.disclaimer-modal-content {
+  background: linear-gradient(135deg, var(--deep-purple) 0%, var(--midnight) 100%);
+  border: 3px solid var(--golden);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(244, 208, 63, 0.4);
+  animation: slideIn 0.4s ease-out;
+  position: relative;
+}
+
+.disclaimer-modal-content .close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 3rem;
+  color: var(--golden);
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.disclaimer-modal-content .close-button:hover {
+  color: var(--alice-cyan);
+  transform: rotate(90deg);
+}
+
+.disclaimer-modal-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(244, 208, 63, 0.25);
+}
+
+.disclaimer-modal-header h2 {
+  font-size: 2.5rem;
+  color: var(--golden);
+  text-shadow: 0 2px 8px rgba(244, 208, 63, 0.6);
+}
+
+.disclaimer-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+.disclaimer-modal-body p {
+  font-size: 2rem;
+  line-height: 1.6;
+  color: var(--silver);
+}
+
+.disclaimer-modal-body a {
+  color: var(--alice-cyan);
+  text-decoration: none;
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+.disclaimer-modal-body a:hover {
+  color: var(--golden);
+  text-shadow: 0 0 10px rgba(244, 208, 63, 0.5);
+}
+
 .dev-password-field {
   display: none;
   margin-top: 0.4rem;
@@ -1176,14 +1441,16 @@ body.large-ui .card-wrapper {
 
 body.large-ui .controller-bubble,
 body.large-ui .nav-bubble,
-body.large-ui .settings-bubble {
+body.large-ui .settings-bubble,
+body.large-ui .information-bubble {
   width: 120px;
   height: 120px;
 }
 
 body.large-ui .controller-bubble-label,
 body.large-ui .nav-bubble-label,
-body.large-ui .settings-bubble-label {
+body.large-ui .settings-bubble-label,
+body.large-ui .information-bubble-label {
   font-size: 1.2rem;
 }
 
@@ -1246,6 +1513,10 @@ body.large-ui .signup-dropdown-inner {
 @media (max-width: 2000px) {
   .character-float #character-gif {
     width: 600px;
+  }
+
+  #shoupan-gif {
+    width: 450px;
   }
 
   .speech-bubble {
@@ -1331,11 +1602,30 @@ body.large-ui .signup-dropdown-inner {
   .settings-bubble-label {
     font-size: 0.85rem;
   }
+
+  .information-bubbles {
+    gap: 0.5rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .information-bubble {
+    width: 90px;
+    height: 90px;
+  }
+
+  .information-bubble-label {
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 640px) {
   .character-float #character-gif {
     width: 150px;
+  }
+
+  #shoupan-gif {
+    width: 250px;
   }
 
   .speech-bubble {
@@ -1421,5 +1711,24 @@ body.large-ui .signup-dropdown-inner {
 
   .signup-dropdown::before {
     display: none;
+  }
+
+  .information-bubbles {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 0 0.5rem;
+  }
+
+  .information-bubble {
+    width: 58px;
+    height: 58px;
+  }
+
+  .information-bubble-label {
+    font-size: 0.54rem;
   }
 }
