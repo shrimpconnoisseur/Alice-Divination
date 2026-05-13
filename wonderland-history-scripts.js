@@ -1,8 +1,5 @@
 'use strict';
 
-// Storage key — swap this out for an authenticated API call when backend exists
-const HISTORY_KEY = 'wonderland_divination_history';
-
 function pad(n) {
   return String(n).padStart(2, '0');
 }
@@ -21,30 +18,68 @@ function formatDate(isoString) {
   });
 }
 
-// History storage helpers
-// NOTE: replace loadHistory/saveHistory/deleteEntry/clearHistory with
-// authenticated fetch() calls once the backend and login system exist.
-// The shape of each entry should match the DB schema (mode, drawn_at, cards[]).
+// storage
+const HISTORY_KEY = 'wonderland_divination_history';
 
-function loadHistory() {
+async function getSession() {
+  const { data: { session } } = await window._supabase.auth.getSession();
+  return session;
+}
+
+async function loadHistory() {
+  const session = await getSession();
+
+  if (session) {
+    const { data, error } = await window._supabase
+      .from('readings')
+      .select('*')
+      .eq('user_id', session.user.id)
+      .order('drawn_at', { ascending: false });
+
+    if (error) {
+      console.error('Failed to load readings from Supabase:', error);
+      return [];
+    }
+    return data;
+  }
+
+  // Guest fallback
   try {
-    return JSON.parse(localStorage.getItem(HISTORY_KEY)) ?? [];
+    return JSON.parse(localStorage.getItem(HISTORY_KEY) ?? '[]')
+      .slice()
+      .reverse(); // newest first, matching Supabase order
   } catch {
     return [];
   }
 }
 
-function saveHistory(entries) {
-  localStorage.setItem(HISTORY_KEY, JSON.stringify(entries));
+async function deleteEntry(id) {
+  const session = await getSession();
+
+  if (session) {
+    await window._supabase
+      .from('readings')
+      .delete()
+      .eq('id', id)
+      .eq('user_id', session.user.id); // safety: can only delete own rows
+  } else {
+    const entries = JSON.parse(localStorage.getItem(HISTORY_KEY) ?? '[]')
+      .filter((e) => e.id !== id);
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(entries));
+  }
 }
 
-function deleteEntry(id) {
-  const entries = loadHistory().filter((e) => e.id !== id);
-  saveHistory(entries);
-}
+async function clearHistory() {
+  const session = await getSession();
 
-function clearHistory() {
-  localStorage.removeItem(HISTORY_KEY);
+  if (session) {
+    await window._supabase
+      .from('readings')
+      .delete()
+      .eq('user_id', session.user.id);
+  } else {
+    localStorage.removeItem(HISTORY_KEY);
+  }
 }
 
 // Settings panel
@@ -79,16 +114,9 @@ largeUIToggle?.addEventListener('change', () => {
 });
 
 // Delete all confirmation
-const confirmOverlay = document.getElementById('confirm-overlay');
-document.getElementById('bubble-delete-all')?.addEventListener('click', () => {
-  confirmOverlay.classList.add('active');
-});
-document.getElementById('confirm-no')?.addEventListener('click', () => {
-  confirmOverlay.classList.remove('active');
-});
-document.getElementById('confirm-yes')?.addEventListener('click', () => {
-  clearHistory();
-  confirmOverlay.classList.remove('active');
+document.getElementById('confirm-yes')?.addEventListener('click', async () => {
+  await clearHistory();
+  document.getElementById('confirm-overlay').classList.remove('active');
   renderHistory();
 });
 
@@ -140,12 +168,18 @@ document.getElementById('card-modal')?.addEventListener('click', (e) => {
   if (e.target === document.getElementById('card-modal')) closeModal();
 });
 
-// Render
-function renderHistory() {
-  const list    = document.getElementById('history-list');
-  const empty   = document.getElementById('history-empty');
+// render
+async function renderHistory() {
+  const list     = document.getElementById('history-list');
+  const empty    = document.getElementById('history-empty');
   const subtitle = document.getElementById('history-subtitle');
-  const entries = loadHistory().slice().reverse(); // newest first
+
+  // Show a loading state while we fetch
+  list.innerHTML = '';
+  subtitle.textContent = 'Loading your divinations...';
+  empty.style.display = 'none';
+
+  const entries = await loadHistory();
 
   list.innerHTML = '';
 
@@ -162,7 +196,6 @@ function renderHistory() {
     const el = document.createElement('div');
     el.className = 'history-entry';
 
-    // Header
     const header = document.createElement('div');
     header.className = 'history-entry-header';
 
@@ -180,8 +213,8 @@ function renderHistory() {
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'history-delete-btn';
     deleteBtn.textContent = 'Delete';
-    deleteBtn.addEventListener('click', () => {
-      deleteEntry(entry.id);
+    deleteBtn.addEventListener('click', async () => {
+      await deleteEntry(entry.id);
       renderHistory();
     });
 
@@ -190,7 +223,6 @@ function renderHistory() {
     header.appendChild(meta);
     header.appendChild(deleteBtn);
 
-    // Card strip
     const cardsEl = document.createElement('div');
     cardsEl.className = 'history-cards';
 

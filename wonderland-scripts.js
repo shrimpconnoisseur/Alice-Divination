@@ -513,6 +513,36 @@ class CharacterController {
   }
 }
 
+// character visibility toggle
+const charToggle = document.getElementById('settings-show-character');
+const characterFloat = document.getElementById('character-float');
+
+if (localStorage.getItem('wonderland_hide_character') === 'true') {
+  if (characterFloat) characterFloat.style.display = 'none';
+  if (charToggle) charToggle.checked = false;
+}
+
+charToggle?.addEventListener('change', () => {
+  const hidden = !charToggle.checked;
+  if (characterFloat) characterFloat.style.display = hidden ? 'none' : '';
+  localStorage.setItem('wonderland_hide_character', String(hidden));
+});
+
+// high contrast mode
+const highContrastToggle = document.getElementById('settings-high-contrast');
+
+if (localStorage.getItem('wonderland_high_contrast') === 'true') {
+  document.body.classList.add('high-contrast');
+  if (highContrastToggle) highContrastToggle.checked = true;
+}
+
+highContrastToggle?.addEventListener('change', () => {
+  const enabled = highContrastToggle.checked;
+  document.body.classList.toggle('high-contrast', enabled);
+  localStorage.setItem('wonderland_high_contrast', String(enabled));
+});
+
+
 // Tarot Reading
 class TarotReading {
   constructor() {
@@ -664,12 +694,40 @@ class TarotReading {
     this._setStatus(`Reading: ${names} - click a card for details!`);
 
     // Persist
+    const readingPayload = {
+      mode: count === 1 ? 'single' : 'three',
+      cards: this.reading.map((d) => ({
+        cardId: d.card.id,
+        position: d.position,
+        reversed: d.reversed,
+      })),
+    };
+
+    const { data: { session } } = await window._supabase.auth.getSession();
+
+    if (session) {
+      // if logged in then save to supabase
+      await window._supabase.from('readings').insert({
+        user_id: session.user.id,
+        mode: readingPayload.mode,
+        cards: readingPayload.cards,
+        drawn_at: new Date().toISOString(),
+      });
+    } else {
+      // if not, then save to local storage
+      const history = JSON.parse(localStorage.getItem('wonderland_divination_history') ?? '[]');
+      history.push({
+        id: crypto.randomUUID(),
+        mode: readingPayload.mode,
+        cards: readingPayload.cards,
+        drawn_at: new Date().toISOString(),
+      });
+      localStorage.setItem('wonderland_divination_history', JSON.stringify(history));
+    }
+
+    // cooldown is kept regardless, of course
     localStorage.setItem(this._cooldownKey(), Date.now().toString());
-    localStorage.setItem('wonderland_last_reading_data', JSON.stringify(this.reading.map((d) => ({
-      cardId: d.card.id,
-      position: d.position,
-      reversed: d.reversed,
-    }))));
+    localStorage.setItem('wonderland_last_reading_data', JSON.stringify(readingPayload.cards));
 
     // Swap Draw to Reset
     this._swapToReset(drawBtn);
@@ -827,62 +885,217 @@ class TarotReading {
   }
 }
 
-// Sign-up bubble toggle
-const signupBubble = document.getElementById('bubble-signup');
-const signupDropdown = document.getElementById('signup-dropdown');
+const signupBubble      = document.getElementById('bubble-signup');
+const signupDropdown    = document.getElementById('signup-dropdown');
+const signupBubbleLabel = document.getElementById('signup-bubble-label');
+const authPanel         = document.getElementById('auth-panel');
+const profilePanel      = document.getElementById('profile-panel');
+const profileUsername   = document.getElementById('profile-username');
+const authError         = document.getElementById('auth-error');
+const emailField        = document.getElementById('email-field');
+const btnSignup         = document.getElementById('btn-signup');
+const btnLogin          = document.getElementById('btn-login');
+const btnLogout         = document.getElementById('btn-logout');
 
-// setup signup functionality
-document.querySelector('.signup-submit')?.addEventListener('click', async () => {
-  const username = document.getElementById('signup-username').value.trim();
-  const password = document.getElementById('signup-password').value;
-
-  // generic validation
-  if (!username || !password) {
-    alert('Please fill in both fields.');
-    return;
-  }
-
-  // i'll think about making this include an email
-  // but for now i'll keep it as username-only
-  const wlEmail = `${username}@wonderland.local`;
-
-  const { data, error} = await window._supabase.auth.signUp({
-    email: wlEmail,
-    password: password,
-    options: {
-      data: { username }
-    }
-  });
-
-  if (error) {
-    alert(`Sign-up error: ${error.message}`);
-    return;
-  }
-
-  await window._supabase.from('profiles').insert({
-    id: data.user.id,
-    username,
-  });
-
-  alert('Welcome to Wonderland!');
-  document.getElementById('signup-dropdown').classList.remove('open');
-})
-
+// Toggle dropdown
 signupBubble?.addEventListener('click', (e) => {
   e.stopPropagation();
   signupDropdown.classList.toggle('open');
   signupBubble.classList.toggle('active');
 });
-
-signupDropdown?.addEventListener('click', (e) => {
-  e.stopPropagation();
-});
-
-// Close when clicking anywhere else
+signupDropdown?.addEventListener('click', (e) => e.stopPropagation());
 document.addEventListener('click', () => {
   signupDropdown?.classList.remove('open');
   signupBubble?.classList.remove('active');
 });
+
+function setAuthError(msg) {
+  if (authError) authError.textContent = msg;
+}
+
+function setLoggedIn(username) {
+  authPanel.style.display     = 'none';
+  profilePanel.style.display  = 'block';
+  profileUsername.textContent = username;
+  signupBubbleLabel.textContent = 'Profile';
+  signupBubble.classList.add('logged-in');
+}
+
+function setLoggedOut() {
+  authPanel.style.display    = 'block';
+  profilePanel.style.display = 'none';
+  signupBubbleLabel.textContent = 'Join us in Wonderland!';
+  signupBubble.classList.remove('logged-in');
+  document.getElementById('signup-username').value = '';
+  document.getElementById('signup-email').value    = '';
+  document.getElementById('signup-password').value = '';
+  emailField.classList.remove('hidden');
+  setAuthError('');
+}
+
+let authMode = 'signup';
+
+function setAuthMode(mode) {
+  authMode = mode;
+  if (mode === 'login') {
+    emailField.classList.add('hidden');
+    btnSignup.classList.add('signup-submit--secondary');
+    btnSignup.classList.remove('signup-submit');
+    btnLogin.classList.add('signup-submit');
+    btnLogin.classList.remove('signup-submit--secondary');
+  } else {
+    emailField.classList.remove('hidden');
+    btnSignup.classList.remove('signup-submit--secondary');
+    btnSignup.classList.add('signup-submit');
+    btnLogin.classList.remove('signup-submit');
+    btnLogin.classList.add('signup-submit--secondary');
+  }
+  setAuthError('');
+}
+
+btnSignup?.addEventListener('click', async () => {
+  if (authMode === 'login') {
+    setAuthMode('signup');
+    return;
+  }
+  await handleSignup();
+});
+
+btnLogin?.addEventListener('click', async () => {
+  if (authMode === 'signup') {
+    setAuthMode('login');
+    return;
+  }
+  await handleLogin();
+});
+
+async function handleSignup() {
+  const username = document.getElementById('signup-username').value.trim();
+  const email    = document.getElementById('signup-email').value.trim();
+  const password = document.getElementById('signup-password').value;
+  setAuthError('');
+
+  if (!username || !email || !password) {
+    setAuthError('Please fill in all fields.');
+    return;
+  }
+  if (username.length < 3) {
+    setAuthError('Username must be at least 3 characters.');
+    return;
+  }
+  if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+    setAuthError('Username can only contain letters, numbers, and underscores.');
+    return;
+  }
+  if (password.length < 8) {
+    setAuthError('Password must be at least 8 characters.');
+    return;
+  }
+
+  // Check username availability
+  const { data: existing } = await window._supabase
+    .from('profiles')
+    .select('id')
+    .eq('username', username)
+    .maybeSingle();
+
+  if (existing) {
+    setAuthError('That username is already taken.');
+    return;
+  }
+
+  const { data, error } = await window._supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { username } },
+  });
+
+  if (error) {
+    setAuthError(error.message);
+    return;
+  }
+
+  const { error: profileError } = await window._supabase
+    .from('profiles')
+    .insert({ id: data.user.id, username, email });
+
+  if (profileError) {
+    setAuthError('Account created but profile setup failed. Please contact support.');
+    return;
+  }
+
+  signupDropdown.classList.remove('open');
+}
+
+async function handleLogin() {
+  const username = document.getElementById('signup-username').value.trim();
+  const password = document.getElementById('signup-password').value;
+  setAuthError('');
+
+  if (!username || !password) {
+    setAuthError('Please fill in both fields.');
+    return;
+  }
+
+  // Fetch the real email for this username
+  const { data: profile } = await window._supabase
+    .from('profiles')
+    .select('id')
+    .eq('username', username)
+    .maybeSingle();
+
+  if (!profile) {
+    setAuthError("We couldn't find that username.");
+    return;
+  }
+
+  const { data: profileWithEmail } = await window._supabase
+    .from('profiles')
+    .select('email')
+    .eq('username', username)
+    .maybeSingle();
+
+  if (!profileWithEmail?.email) {
+    setAuthError("We couldn't find that username.");
+    return;
+  }
+
+  const { error } = await window._supabase.auth.signInWithPassword({
+    email: profileWithEmail.email,
+    password,
+  });
+
+  if (error) {
+    setAuthError('Incorrect password. Try again.');
+    return;
+  }
+
+  signupDropdown.classList.remove('open');
+}
+
+btnLogout?.addEventListener('click', async () => {
+  await window._supabase.auth.signOut();
+  signupDropdown.classList.remove('open');
+});
+
+async function initAuth() {
+  const { data: { session } } = await window._supabase.auth.getSession();
+  if (session) {
+    const username = session.user.user_metadata?.username ?? session.user.email;
+    setLoggedIn(username);
+  }
+
+  window._supabase.auth.onAuthStateChange((_event, session) => {
+    if (session) {
+      const username = session.user.user_metadata?.username ?? session.user.email;
+      setLoggedIn(username);
+    } else {
+      setLoggedOut();
+    }
+  });
+}
+
+initAuth();
 
 // settings panel toggle
 const settingsBubble = document.getElementById('settings-bubble');
@@ -1049,6 +1262,23 @@ devPasswordInput?.addEventListener('blur', () => {
       devPasswordInput.value = '';
     }
   }, 150);
+});
+
+const reduceMotionToggle = document.getElementById('settings-reduce-motion');
+
+// also check the browser's native preference on first visit
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const savedReduceMotion = localStorage.getItem('wonderland_reduce_motion');
+
+if (savedReduceMotion === 'true' || (savedReduceMotion === null && prefersReduced)) {
+  document.body.classList.add('reduce-motion');
+  if (reduceMotionToggle) reduceMotionToggle.checked = true;
+}
+
+reduceMotionToggle?.addEventListener('change', () => {
+  const enabled = reduceMotionToggle.checked;
+  document.body.classList.toggle('reduce-motion', enabled);
+  localStorage.setItem('wonderland_reduce-motion', String(enabled));
 });
 
 // disclaimer first-visit

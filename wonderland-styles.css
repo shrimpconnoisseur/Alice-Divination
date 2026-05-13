@@ -381,6 +381,54 @@ body::after {
   transform: translateY(-1px);
 }
 
+.auth-error {
+  font-family: "AliceFont", cursive;
+  font-size: 0.95rem;
+  color: #ff6b8a;
+  text-align: center;
+  min-height: 1.2em;
+  text-shadow: 0 0 8px rgba(255, 107, 138, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+.auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.signup-submit--secondary {
+  background: transparent;
+  color: var(--silver);
+  border-color: rgba(192, 192, 216, 0.35);
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+.signup-submit--secondary:hover {
+  background: rgba(107, 78, 154, 0.3);
+  color: var(--alice-cyan);
+  border-color: var(--alice-cyan);
+  box-shadow: 0 0 12px rgba(77, 217, 232, 0.25);
+}
+
+.profile-username {
+  font-family: "AliceFont", cursive;
+  font-size: 1.5rem;
+  color: var(--alice-cyan);
+  text-align: center;
+  text-shadow: 0 0 10px rgba(77, 217, 232, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.nav-bubble--signup.logged-in .nav-bubble-label {
+  color: var(--alice-cyan);
+}
+
+#email-field.hidden {
+  display: none;
+}
+
 /* CONTAINERS */
 .wonderland-container {
   max-width: 1200px;
@@ -1509,7 +1557,82 @@ body.large-ui .signup-dropdown-inner {
   gap: 1.2rem;
 }
 
+/* high contrast mode */
+body.high-contrast {
+  --golden: #ffe033;
+  --alice-cyan: #00f0ff;
+  --silver: #ffffff;
+  --mystic-purple: #c084fc;
+}
+
+body.high-contrast .title {
+  text-shadow: none;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+}
+
+body.high-contrast .nav-bubble,
+body.high-contrast .controller-bubble,
+body.high-contrast .settings-bubble,
+body.high-contrast .information-bubble {
+  border: 3px solid var(--golden);
+  background: rgba(0, 0, 0, 0.85);
+}
+
+body.high-contrast .card-back,
+body.high-contrast .card-front,
+body.high-contrast .modal-content,
+body.high-contrast .supabase-modal-content,
+body.high-contrast .disclaimer-modal-content {
+  border-width: 4px;
+}
+
+body.high-contrast .speech-bubble {
+  border-width: 4px;
+  background: rgba(0, 0, 0, 0.95);
+}
+
+body.high-contrast .tarot-card-reading {
+  border: 3px solid var(--alice-cyan);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+body.high-contrast .draw-button {
+  border-width: 4px;
+  font-weight: 700;
+}
+
+body.high-contrast .settings-panel {
+  border-right-width: 3px;
+}
+
+/* stops/reduces animations or moving parts */
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* disables "star field" */
+body.reduce-motion::after {
+  display: none;
+}
+
 /* RESPONSIVE DESIGNS */
+@media (prefers-reduced-motion: reduce) {
+  body *,
+  body *::before,
+  body *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* disables "star field" */
+  body::after {
+    display: none;
+  }
+}
+
 @media (max-width: 2000px) {
   .character-float #character-gif {
     width: 600px;
